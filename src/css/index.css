@@ -7,6 +7,7 @@ body {
     color: #333;
     background-color: #F2F2F2;
 }
+input{outline:0px;}
 a {
     text-decoration:none;
     color:white;
@@ -91,6 +92,11 @@ img {
     overflow: hidden;
     letter-spacing: 1px;
     background: #eb6120;
+    border-bottom: 2px solid #C1480E;
+    border-top: 2px solid #eb6120;
+}
+.button:hover {
+    border-bottom: 2px solid #eb6120;
 }
 .nav {
     position: absolute;
@@ -111,4 +117,86 @@ img {
 .next {
     right: -25px;
     transform: rotate(180deg);
+}
+.modal {
+    z-index: 3;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0px;
+    display: none;
+    margin: auto;
+    animation-name:modal;
+    animation-duration:600ms;
+    animation-timing-function: ease-in-out;
+     -webkit-transition: .3s ease-out; 
+    transition: .3s ease-out;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+    background-color: white;
+}
+@keyframes modal{
+
+    0% {transform-origin: 50% 50%;transform: rotate3d(0, 1, 0, 720deg) rotateZ(45deg) scale(0);}
+
+    100% {transform: rotate3d(0, 1, 0, 0) rotateZ(0) scale(1);}
+
+}
+.modal-head {
+    margin: 40px auto 40px;
+    text-align: center;
+}
+#login {
+    width: 300px;
+    height: 300px;
+}
+input {
+    border:none;
+    padding: 15px 8px;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.border-wrap {
+    border-bottom: 1px solid #eee;
+}
+.border-wrap:first-child {
+    border-top: 1px solid #eee;
+}
+.login-submit {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 80%;
+    margin: 28px auto;
+    background: #eb6120;
+    color: white;
+    border-bottom: 3px solid #C1480E;
+    border-top: 3px solid #eb6120;
+}
+.login-submit:hover {
+    border-bottom: 3px solid #eb6120;
+}
+.icon {
+    background-position: -37px -76px;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/icons.png);
+}
+.close {
+    right: 10px;
+    opacity: .2;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+}
+.close:hover {
+    opacity: .3;
 }
