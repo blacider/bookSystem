@@ -24,6 +24,28 @@ module.exports = function(grunt) {
     clean: {
       build: ['build/**']
     },
+    'http-server': {
+ 
+        'dev': {
+            root: "build/",
+            port: 8080,
+            host: "0.0.0.0",
+            cache: 1000,
+            showDir : true,
+            autoIndex: true,
+            ext: "html",
+            runInBackground: true|false,
+            logFn: function(req, res, error) { },
+            openBrowser : false,
+            customPages: {
+                "/":"templates/index.html",
+                "/readme": "README.md",
+                "/readme.html": "README.html"
+            }
+ 
+        }
+ 
+    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -50,7 +72,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-http-server');
   // 默认被执行的任务列表。
-  grunt.registerTask('default', ['clean', 'uglify', 'copy', 'watch']);
+  grunt.registerTask('default', ['clean', 'uglify', 'copy', 'http-server', 'watch']);
 
 };
