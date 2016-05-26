@@ -57,10 +57,11 @@ header ul li{
     position: relative;
 }
 .banner ul {
-    width: 200%;
+    width: 50%;
     display: block;
     height: 100%;
     position: relative;
+    float: left;
 }
 .banner-item {
     list-style: none;
@@ -73,6 +74,10 @@ header ul li{
 }
 .banner-item:hover {
     border: 1px solid red;
+}
+.banner-container {
+    position: relative;
+    height: 100%;
 }
 .banner-item h5 {
     color:black;
