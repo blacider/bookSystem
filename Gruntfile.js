@@ -28,17 +28,17 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       my_target: {
-        mangle: false,
-        files: [
-          {
-            src: "src/js/*.js",
-            dest: "build/js/<%=pkg.name%>.min.js"
-          },
-          {
-            src: "src/lib/*.js",
-            dest: "build/js/lib.min.js"
-          }
-        ]
+        files: [{
+          expand:true,
+          cwd:'src/js/',
+          src:'**/*.js',
+          dest: 'build/js/'
+        },{
+          expand:true,
+          cwd:'src/lib/',
+          src:'**/*.js',
+          dest: 'build/js/'
+        }]
       }
     }
   });

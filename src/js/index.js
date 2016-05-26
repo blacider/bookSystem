@@ -1,3 +1,5 @@
-window.onload = function() {
-    console.log("helloWorld!");
-}
+(function(window, undefined) {
+    window.onload = function() {
+        console.log("load complete");
+    }
+})(window);
