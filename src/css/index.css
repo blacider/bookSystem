@@ -12,6 +12,9 @@ a {
     text-decoration:none;
     color:white;
 }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
 header {
     display: flex;
     height: 50px;
@@ -119,14 +122,13 @@ img {
     transform: rotate(180deg);
 }
 .modal {
-    z-index: 3;
+    z-index: 100;
     position: absolute;
     top:0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 0px;
-    display: none;
     margin: auto;
     animation-name:modal;
     animation-duration:600ms;
@@ -136,6 +138,9 @@ img {
     border-radius: 8px;
     box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
     background-color: white;
+    opacity: 1;
+    display: none;
+    border: 1px solid #cbcbcb;
 }
 @keyframes modal{
 
@@ -199,4 +204,18 @@ input {
 }
 .close:hover {
     opacity: .3;
+}
+.modal-fog {
+    background-color: #fff;
+    opacity:0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    overflow: auto;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
 }

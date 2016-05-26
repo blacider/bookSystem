@@ -26,9 +26,17 @@
         (function bendEvent() {
             $("#login-button").click(function(event) {
                 $("#login").css('display', 'block');
+                $(".modal-fog").css({
+                    visibility:"visible",
+                    opacity:0.9
+                });
             });
             $("#login .close").click(function(event) {
                 $("#login").css('display', 'none');
+                $(".modal-fog").css({
+                    visibility:"hidden",
+                    opacity:0
+                });
             });
         })();
     });
