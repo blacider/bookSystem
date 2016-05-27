@@ -28,7 +28,7 @@ module.exports = function(grunt) {
  
         'dev': {
             root: "build/",
-            port: 8080,
+            port: 8888,
             host: "0.0.0.0",
             cache: 1000,
             showDir : true,
