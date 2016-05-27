@@ -1,5 +1,4 @@
-/front/node_modules
-/front/build
+node_modules
 .classpath
 .project
 target/
@@ -7,4 +6,4 @@ bin/
 .settings/
 .idea/
 *.iml
-
+src/main/webapp/

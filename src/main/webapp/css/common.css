@@ -59,19 +59,6 @@ header ul li a:hover {
     margin:0 auto;
     height: 100%;
 }
-.path-text {
-    color: black;
-    padding: 20px;
-    font-size: 14px;
-}
-.path a {
-    float: left;
-}
-.path span{
-    font-size: 14px;
-    color: red;
-    margin:5px;
-}
 .modal-fog {
     background-color: #fff;
     opacity:0;
