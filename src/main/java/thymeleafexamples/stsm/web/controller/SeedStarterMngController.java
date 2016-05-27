@@ -134,14 +134,32 @@ public class SeedStarterMngController {
         return "seedstartermng";
     }
     
-    @RequestMapping({"/signup"})
-    public String signUp(final User user) {
-    	jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS users(id SERIAL, userName VARCHAR(255), passWord VARCHAR(255))");
-        return "signup";
+    
+    @RequestMapping({"/homepage"})
+    public String Homepage(final User user) {
+        return "index";
     }
     
-	@RequestMapping(value="/signup", method=RequestMethod.POST)
-    public String checkPersonInfo(User user, final BindingResult bindingResult, final ModelMap model) {
+    @RequestMapping(value="/homepage", params={"login"})
+    public String Login(User user, final BindingResult bindingResult, final ModelMap model) {
+        if (bindingResult.hasErrors()) {
+            return "index";
+        }
+        user = (User)model.get("user");
+        List<User> temp = this.userService.findAll();
+        try {
+        	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
+        	if (count > 0) {
+        		return "result";
+        	}
+        }catch(EmptyResultDataAccessException e) {
+        	return "index";
+        }
+    	return "index";
+    }
+    
+    @RequestMapping(value="/homepage", params={"signup"})
+    public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return "signup";
         }
@@ -149,35 +167,5 @@ public class SeedStarterMngController {
         this.userService.add(user);
         model.put("user", user);
         return "result";
-    }
-    
-    @RequestMapping({"/login"})
-    public String logIn(final User user) {
-        return "login";
-    }
-    
-    @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String checkLoginIn(User user, final BindingResult bindingResult, final ModelMap model) {
-        if (bindingResult.hasErrors()) {
-            return "login";
-        }
-        user = (User)model.get("user");
-        List<User> temp = this.userService.findAll();
-        /*for(int i=0;i<temp.size();i++)
-        {
-           if(temp.get(i).getName().equals(user.getName())
-        	&&temp.get(i).getPassword().equals(user.getPassword())) {
-        	   return "result";
-           }
-        }*/
-        try {
-        	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
-        	if (count > 0) {
-        		return "result";
-        	}
-        }catch(EmptyResultDataAccessException e) {
-        	return "login";
-        }
-        return "login";
     }
 }

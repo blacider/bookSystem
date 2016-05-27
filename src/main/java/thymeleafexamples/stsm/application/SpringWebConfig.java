@@ -85,6 +85,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("utf-8");
         // Template cache is true by default. Set to false if you want
         // templates to be automatically updated when modified.
         templateResolver.setCacheable(true);
@@ -116,11 +117,13 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
     	jdbcTemplate.setDataSource(this.dataSource());
 		return jdbcTemplate;
     }
-	
+    
     @Bean
     public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
+        
         return viewResolver;
     }
 

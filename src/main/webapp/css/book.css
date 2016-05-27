@@ -1,0 +1,10 @@
+#main {
+    background-color: white;
+}
+.film-img {
+    width: 200px;
+    height: 250px;
+    border: 1px solid #D2D2D2;
+    display: block;
+    float: left;
+}
