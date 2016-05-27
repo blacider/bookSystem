@@ -40,7 +40,8 @@ module.exports = function(grunt) {
             customPages: {
                 "/":"templates/index.html",
                 "/readme": "README.md",
-                "/readme.html": "README.html"
+                "/readme.html": "README.html",
+                "/book": "templates/book.html"
             }
  
         }

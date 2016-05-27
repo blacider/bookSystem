@@ -2,6 +2,13 @@
     jQuery(document).ready(function($) {
         (function bannerInit() {
             var container = $(".banner-container");
+            container.delegate('a', 'click', function(event) {
+                var id = $(event.target).closest('.banner-item').data("id");
+                window.location.href = "/book";
+                //TODO
+                //window.location.href = "/book?id=" + id;
+                event.preventDefault();
+            });
             var list1 = container.find("ul");
             //不够7个时复制
             var aDoms = list1.find('.banner-item');
@@ -54,26 +61,6 @@
                 }, 2000);
             }).mouseenter(function(event) {
                 clearInterval(intervalId);
-            });
-        })();
-        (function bendEvent() {
-            var showModal = function(selecter) {
-                $(selecter).css('display', 'block');
-                $(".modal-fog").css({
-                    visibility:"visible",
-                    opacity:0.9
-                });
-            }
-            $("header ul").delegate('a', 'click', function(event) {
-                var target = $(event.target).data("modal");
-                showModal("#" + target);
-            });
-            $(".close").click(function(event) {
-                $(".modal").css('display', 'none');
-                $(".modal-fog").css({
-                    visibility:"hidden",
-                    opacity:0
-                });
             });
         })();
     });
