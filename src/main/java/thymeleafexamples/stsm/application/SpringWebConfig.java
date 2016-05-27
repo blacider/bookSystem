@@ -36,7 +36,6 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import thymeleafexamples.stsm.web.conversion.DateFormatter;
-import thymeleafexamples.stsm.web.conversion.VarietyFormatter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -149,21 +148,4 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
      * Add formatter for class {@link thymeleafexamples.stsm.business.entities.Variety}
      * and {@link java.util.Date} in addition to the one registered by default
      */
-    @Override
-    public void addFormatters(final FormatterRegistry registry) {
-        super.addFormatters(registry);
-        registry.addFormatter(varietyFormatter());
-        registry.addFormatter(dataFormatter());
-    }
-
-    @Bean
-    public VarietyFormatter varietyFormatter() {
-        return new VarietyFormatter();
-    }
-
-    @Bean
-    public DateFormatter dataFormatter() {
-        return new DateFormatter();
-    }
-
 }

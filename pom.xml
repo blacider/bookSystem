@@ -22,8 +22,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>thymeleafexamples</groupId>
-  <artifactId>stsm</artifactId>
+  <groupId>reservationSystem</groupId>
+  <artifactId>app</artifactId>
   <packaging>war</packaging>
   <version>ci</version>
   <name>Thymeleaf Examples - Spring Thyme Seedstarter Manager</name>
@@ -37,17 +37,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
-  <organization>
-    <name>The THYMELEAF team</name>
-    <url>http://www.thymeleaf.org</url>
-  </organization>
-  
-  <scm>
-    <url>scm:git:git@github.com:thymeleaf/thymeleafexamples-stsm.git</url>
-    <connection>scm:git:git@github.com:thymeleaf/thymeleafexamples-stsm.git</connection>
-    <developerConnection>scm:git:git@github.com:thymeleaf/thymeleafexamples-stsmgit</developerConnection>
-  </scm>
   
   <developers>
     <developer>
