@@ -7,4 +7,66 @@
     border: 1px solid #D2D2D2;
     display: block;
     float: left;
+    margin-left:25px;
+}
+.path .content, #main {
+    background-color: white;
+}
+.path-text {
+    color: black;
+    padding: 20px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.path a {
+    float: left;
+}
+.path span{
+    font-size: 14px;
+    color: red;
+    margin:5px;
+}
+.film-content {
+    margin-left: 250px;
+}
+.film-content-main {
+    margin-top: 25px;
+}
+.film-content-main span {
+    color: #999;
+    padding-right: 3px;
+}
+.film-content-main p {
+    padding-right: 25px;
+    text-align: justify;
+    color: #666;
+    font-size: 13px;
+    margin-top: 7px;
+}
+.star {
+    width: 95px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-image: url(../images/star.png);
+    float: left;
+}
+.star-main {
+    width: 85px;
+    background-position: 0px -22px;
+}
+.score {
+    position: absolute;
+    right: 80px;
+    top: 20px;
+}
+.num {
+    margin-left: 20px;
+    float: left;
+    color: #ff658e;
+    font-size: 36px;
+}
+.num span {
+    position: relative;
+    top: -10px;
+    font-size: 22px;
 }
