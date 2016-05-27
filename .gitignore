@@ -1,2 +1,10 @@
-/node_modules
-/build
+/front/node_modules
+/front/build
+.classpath
+.project
+target/
+bin/
+.settings/
+.idea/
+*.iml
+

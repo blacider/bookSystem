@@ -5,11 +5,11 @@
 bookSystem 是一个电影订票系统。
 
 ## 所用工具
-* 前端
+* ###前端
 	* node
 	* grunt
 	* jQuery
-* 后端
+* ###后端
 	* mevan
 	* spring
 	* jdk
@@ -18,3 +18,7 @@ bookSystem 是一个电影订票系统。
 ## 运行
 1. 安装 nodejs && npm
 2. `npm install && grunt` 
+
+
+## License
+ BookSystem is licensed under the MIT license. (http://opensource.org/licenses/MIT)
