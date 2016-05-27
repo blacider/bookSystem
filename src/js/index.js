@@ -2,9 +2,16 @@
     jQuery(document).ready(function($) {
         (function bannerInit() {
             var container = $(".banner-container");
+            var list1 = container.find("ul");
+            //不够7个时复制
+            var aDoms = list1.find('.banner-item');
+            while (list1.find(".banner-item").length < 7) {
+                list1.append(aDoms.clone(true, true));
+            }
+            //改变 container 宽度至可以容纳两倍的列表
             var size = container.find('li').length;
             container.width(size*169*2);
-            var list1 = container.find("ul");
+            //复制列表
             var list2 = list1.clone(true);
             list1.after(list2);
             var current = 1;
@@ -50,15 +57,19 @@
             });
         })();
         (function bendEvent() {
-            $("#login-button").click(function(event) {
-                $("#login").css('display', 'block');
+            var showModal = function(selecter) {
+                $(selecter).css('display', 'block');
                 $(".modal-fog").css({
                     visibility:"visible",
                     opacity:0.9
                 });
+            }
+            $("header ul").delegate('a', 'click', function(event) {
+                var target = $(event.target).data("modal");
+                showModal("#" + target);
             });
-            $("#login .close").click(function(event) {
-                $("#login").css('display', 'none');
+            $(".close").click(function(event) {
+                $(".modal").css('display', 'none');
                 $(".modal-fog").css({
                     visibility:"hidden",
                     opacity:0
