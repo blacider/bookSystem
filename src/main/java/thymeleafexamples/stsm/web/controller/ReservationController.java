@@ -34,14 +34,14 @@ import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
-public class SeedStarterMngController {
+public class ReservationController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
     @Autowired
     private UserService userService;
     
-    public SeedStarterMngController() {
+    public ReservationController() {
         super();
     }
     
@@ -55,7 +55,12 @@ public class SeedStarterMngController {
         return "index";
     }
     
-    @RequestMapping(value="/homepage", params={"login"})
+    @RequestMapping({"/book"})
+    public String Book(final User user) {
+        return "book";
+    }
+    
+    @RequestMapping(value={"/homepage","/book"}, params={"login"})
     public String Login(User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return "index";
@@ -72,7 +77,7 @@ public class SeedStarterMngController {
     	return "index";
     }
     
-    @RequestMapping(value="/homepage", params={"signup"})
+    @RequestMapping(value={"/homepage","/book"}, params={"signup"})
     public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return "signup";
