@@ -87,7 +87,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         templateResolver.setCharacterEncoding("utf-8");
         // Template cache is true by default. Set to false if you want
         // templates to be automatically updated when modified.
-        templateResolver.setCacheable(true);
+        templateResolver.setCacheable(false);
         return templateResolver;
     }
     

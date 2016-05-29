@@ -60,7 +60,7 @@ header ul li a:hover {
     height: 100%;
 }
 .modal-fog {
-    background-color: #fff;
+    background-color: #000;
     opacity:0;
     visibility: hidden;
     position: fixed;

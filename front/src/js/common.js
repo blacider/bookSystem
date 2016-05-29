@@ -5,7 +5,7 @@
                 $(selecter).css('display', 'block');
                 $(".modal-fog").css({
                     visibility:"visible",
-                    opacity:0.9
+                    opacity:0.3
                 });
             }
             $("header .right").delegate('a', 'click', function(event) {
