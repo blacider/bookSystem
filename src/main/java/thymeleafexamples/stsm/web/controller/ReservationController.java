@@ -29,6 +29,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.services.UserService;
