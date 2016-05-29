@@ -14,6 +14,7 @@ bookSystem 是一个电影订票系统。
 	* spring
 	* jdk
     * mysql
+
 	
 ## start
 1. 安装必要的支持库(jdk, node, mysql, mevan)
@@ -26,6 +27,13 @@ bookSystem 是一个电影订票系统。
 ## 已有的 url
 * `localhost:8080/app` ：主页
 * `localhost:8080/app/book` 订票页面
+
+## 目录结构
+* 前端
+    * 源文件：fron/src/
+    * build 目录：src/main/webapp
+* 后端
+    * src...
 
 ## License
  BookSystem is licensed under the MIT license. (http://opensource.org/licenses/MIT)
