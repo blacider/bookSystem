@@ -33,7 +33,10 @@ bookSystem 是一个电影订票系统。
     * 源文件：fron/src/
     * build 目录：src/main/webapp
 * 后端
-    * src...
+    * MVC配置文件：src\main\java\thymeleafexamples\stsm\application
+    * Model: src\main\java\thymeleafexamples\stsm\business\entities
+    * Controller: src\main\java\thymeleafexamples\stsm\web\controller
+    * View: src\main\webapp
 
 ## License
  BookSystem is licensed under the MIT license. (http://opensource.org/licenses/MIT)
