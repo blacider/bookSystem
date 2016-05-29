@@ -23,7 +23,6 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>reservationSystem</groupId>
-  <artifactId>app</artifactId>
   <packaging>war</packaging>
   <version>ci</version>
   <name>Thymeleaf Examples - Spring Thyme Seedstarter Manager</name>
@@ -303,4 +302,5 @@
 	</dependency>  
   </dependencies>
   
+  <artifactId>app</artifactId>
 </project>

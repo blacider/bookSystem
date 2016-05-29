@@ -3,18 +3,18 @@
 <head>
     <title>bookSytem-购票</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="../css/common.css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" href="../css/book.css" th:href="@{/css/book.css}">
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../js/common.js"></script>
-    <script src="../js/book.js"></script>
+    <script src="../js/common.js" th:src="@{/js/common.js}"></script>
+    <script src="../js/book.js" th:src="@{/js/common.js}"></script>
 </head>
 <body>
     <header>
         <div class="content">
             <ul class="left">
                 <li class="active">
-                    <a href="/">bookSystem</a>
+                    <a href="/" th:href="@{/}">bookSystem</a>
                 </li>
             </ul>
             <ul class="right">
@@ -29,11 +29,11 @@
     </header>
     <div class="path">
         <p class="content path-text">
-            <a href="/"><span>首页</span></a> <span>>></span> 订票
+            <a href="/" th:href="@{/}"><span>首页</span></a> <span>>></span> 订票
         </p>
     </div>
     <div class="content" id="main">
-        <img src="../images/item1.jpeg" class="film-img" alt="img">
+        <img src="../images/item1.jpeg" th:src="@{/images/item1.jpeg}" class="film-img" alt="img">
         <div class="score">
             <div class="star">
                 <div class="star star-main">
@@ -70,14 +70,14 @@
         <div class="modal-head">
             <h1>登录</h1>
         </div>
-        <form action="#">
+        <form action="#" th:action="@{/homepage}" th:object="${user}" method="post">
             <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required>
+                <input type="text" placeholder="请输入用户名" required  th:field="*{name}">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required>
+                <input type="password" placeholder="请输入密码" required th:field="*{password}">
             </div>
-            <input class="login-submit" type="submit" value="登录">
+            <input class="login-submit" name = "login" type="submit" value="登录">
         </form>
     </div>
     <div class="modal" id="signin">
@@ -86,17 +86,17 @@
         <div class="modal-head">
             <h1>注册</h1>
         </div>
-        <form action="#">
+        <form action="#" th:action="@{/homepage}" th:object="${user}" method="post">
             <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required>
+                <input type="text" placeholder="请输入用户名" required th:field="*{name}">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required>
+                <input type="password" placeholder="请输入密码">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请确认密码" required>
+                <input type="password" placeholder="请确认密码" required th:field="*{password}">
             </div>
-            <input class="login-submit" type="submit" value="注册">
+            <input class="login-submit"  name = "signup" type="submit" value="注册">
         </form>
     </div>
 </body>
