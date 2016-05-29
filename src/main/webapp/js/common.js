@@ -1,2 +1,0 @@
-/*! bookSystem 2016-05-28 */
-!function(a,b){jQuery(document).ready(function(a){!function(){var b=function(b){a(b).css("display","block"),a(".modal-fog").css({visibility:"visible",opacity:.9})};a("header .right").delegate("a","click",function(c){var d=a(c.target).data("modal");b("#"+d)}),a(".close").click(function(b){a(".modal").css("display","none"),a(".modal-fog").css({visibility:"hidden",opacity:0})})}()})}(window);
