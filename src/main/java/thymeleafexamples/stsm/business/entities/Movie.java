@@ -19,15 +19,31 @@
  */
 package thymeleafexamples.stsm.business.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class Movie {
 
     private Integer id = null;
     private String movieName = null;
+    
+    // 详细信息
     private List<String> movieActors = new ArrayList<String>();
+    // 电影简介
+    private String summary = null;
+    // 电影类型，如动作，战争，奇幻
+    private List<String> movieType = new ArrayList<String>();
+    // 电影国家，用字符串记录，可用枚举简化数据
+    private String belongCountry = null;
+    // 电影时长，单位 min
+    private Integer filmLength = null;
+    // 首映时间
+    private java.util.Date publishTime = new java.util.Date();
+    
+    // 显示有权播放该电影的电影场次列表
+    // 仅仅记录有版权的影院，而影院是否有提供该场次的电影不可知
+    private List<Integer> thearterList = new ArrayList<Integer>();
+    
     
     public Movie() {
         super();
@@ -55,4 +71,65 @@ public class Movie {
     public void setMovieActors(final List<String> movieActors) {
     	this.movieActors = movieActors;
     }
+
+
+	public String getSummary() {
+		return summary;
+	}
+
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+
+	public List<String> getMovieType() {
+		return movieType;
+	}
+
+
+	public void setMovieType(List<String> movieType) {
+		this.movieType = movieType;
+	}
+
+
+	public String getBelongCountry() {
+		return belongCountry;
+	}
+
+
+	public void setBelongCountry(String belongCountry) {
+		this.belongCountry = belongCountry;
+	}
+
+
+	public Integer getFilmLength() {
+		return filmLength;
+	}
+
+
+	public void setFilmLength(Integer filmLength) {
+		this.filmLength = filmLength;
+	}
+
+
+	public java.util.Date getPublishTime() {
+		return publishTime;
+	}
+
+
+	public void setPublishTime(java.util.Date publishTime) {
+		this.publishTime = publishTime;
+	}
+
+
+	public List<Integer> getThearterList() {
+		return thearterList;
+	}
+
+
+	public void setThearterList(List<Integer> thearterList) {
+		this.thearterList = thearterList;
+	}
+
 }
