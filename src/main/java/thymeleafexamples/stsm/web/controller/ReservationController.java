@@ -21,6 +21,9 @@ package thymeleafexamples.stsm.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -28,6 +31,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +42,7 @@ import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
+@SessionAttributes("currentUser")
 public class ReservationController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -52,9 +59,17 @@ public class ReservationController {
         return this.userService.findAll();
     }
     
-    @RequestMapping({"/","/homepage"})
-    public String Homepage(final User user) {
-        return "index";
+    @RequestMapping({"","/homepage"})
+    public String Homepage(final User user, HttpServletRequest req) {
+    	HttpSession session = req.getSession(true);
+    	
+    	session.setMaxInactiveInterval(10000);
+    	User currentUser = (User) session.getAttribute("currentUser");
+    	if (currentUser != null) {
+    		return "result";
+    	} else {
+            return "index";
+    	}
     }
     
     @RequestMapping({"/book"})
@@ -63,14 +78,17 @@ public class ReservationController {
     }
     
     @RequestMapping(value={"/homepage","/book"}, params={"login"})
-    public String Login(User user, final BindingResult bindingResult, final ModelMap model) {
-        if (bindingResult.hasErrors()) {
+    public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
+    	model.addAttribute("str", "111");
+    	request.setAttribute("mes", "heh");
+    	if (bindingResult.hasErrors()) {
             return "index";
         }
         user = (User)model.get("user");
         try {
         	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
         	if (count > 0) {
+        		request.getSession().setAttribute("currentUser", user);
         		return "result";
         	}
         }catch(EmptyResultDataAccessException e) {
