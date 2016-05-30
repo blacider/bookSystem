@@ -62,14 +62,12 @@ public class ReservationController {
     @RequestMapping({"","/homepage"})
     public String Homepage(final User user, HttpServletRequest req) {
     	HttpSession session = req.getSession(true);
-    	
-    	session.setMaxInactiveInterval(10000);
-    	User currentUser = (User) session.getAttribute("currentUser");
-    	if (currentUser != null) {
-    		return "result";
-    	} else {
-            return "index";
-    	}
+    	String error = (String)session.getAttribute("Error");
+        if (error == null) {
+            req.setAttribute("Error", error);
+            session.removeAttribute("Error");
+        }
+    	return "index";
     }
     
     @RequestMapping({"/book"})
@@ -79,22 +77,22 @@ public class ReservationController {
     
     @RequestMapping(value={"/homepage","/book"}, params={"login"})
     public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
-    	model.addAttribute("str", "111");
-    	request.setAttribute("mes", "heh");
+    	// model.addAttribute("str", "111");
+    	// request.setAttribute("mes", "heh");
     	if (bindingResult.hasErrors()) {
-            return "index";
+            session.setAttribute("Error", "Binding Result Error!");
+        } else {
+            user = (User)model.get("user");
+            try {
+                // int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
+                String pas = jdbcTemplate.queryForObject("SELECT password FROM users WHERE userName = ?", new Object[] {user.getName()}, String.class);
+        	    if (pas != user.getPassword())
+                    session.setAttribute("Error", "Incorrect Password!");
+            }catch(EmptyResultDataAccessException e) {
+        	    session.setAttribute("Error", "Username Not Found!");
+            }
         }
-        user = (User)model.get("user");
-        try {
-        	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
-        	if (count > 0) {
-        		request.getSession().setAttribute("currentUser", user);
-        		return "result";
-        	}
-        }catch(EmptyResultDataAccessException e) {
-        	return "index";
-        }
-    	return "index";
+        return "redirect:homepage";
     }
 
     @RequestMapping("/logout")
