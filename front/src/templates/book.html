@@ -17,7 +17,7 @@
                     <a href="/" th:href="@{/}">bookSystem</a>
                 </li>
             </ul>
-            <ul class="right login-signup" hidden>
+            <ul class="right login-signup" th:if="${session.currentUser eq null}">
                 <li>
                     <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
                 </li>
@@ -25,12 +25,12 @@
                     <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
                 </li>
             </ul>
-            <ul class="right">
+            <ul class="right" th:if="${session.currentUser ne null}">
                 <li>
-                    <a id="user-button" href="javascript:void(0)">blacider</a>
+                    <a id="user-button" href="javascript:void(0)" th:text="${session.currentUser}">blacider</a>
                 </li>
             </ul>
-            <div id="dropdown-menu" class="hidden">
+            <div id="dropdown-menu" class="hidden" th:if="${session.currentUser ne null}">
                 <ul>
                     <a href="/app/logout" th:href="@{/logout}"><li>登出</li></a>
                 </ul>
