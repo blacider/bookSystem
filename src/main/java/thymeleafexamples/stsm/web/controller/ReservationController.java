@@ -77,7 +77,7 @@ public class ReservationController {
         return "book";
     }
     
-    @RequestMapping(value={"/homepage","/book"}, params={"login"})
+    @RequestMapping("/login")
     public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
     	model.addAttribute("str", "111");
     	request.setAttribute("mes", "heh");
@@ -103,7 +103,7 @@ public class ReservationController {
         return "redirect:homepage";
     }
     
-    @RequestMapping(value={"/homepage","/book"}, params={"signup"})
+    @RequestMapping("/signup")
     public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return "signup";
