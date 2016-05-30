@@ -23,7 +23,6 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>reservationSystem</groupId>
-  <artifactId>app</artifactId>
   <packaging>war</packaging>
   <version>ci</version>
   <name>Thymeleaf Examples - Spring Thyme Seedstarter Manager</name>
@@ -300,7 +299,19 @@
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
 		<version>5.1.9</version>
-	</dependency>  
+	</dependency>
+    <dependency>
+     <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>1.2.0.RELEASE</version>
+                <type>pom</type>
+        </dependency>
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>4.2.5.RELEASE</version>
+        </dependency>  
   </dependencies>
   
+  <artifactId>app</artifactId>
 </project>
