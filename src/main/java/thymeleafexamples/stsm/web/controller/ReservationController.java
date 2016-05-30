@@ -44,7 +44,6 @@ import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
-@SessionAttributes("currentUser")
 public class ReservationController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
