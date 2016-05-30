@@ -62,10 +62,10 @@ public class ReservationController {
     @RequestMapping({"","/homepage"})
     public String Homepage(final User user, HttpServletRequest req) {
     	HttpSession session = req.getSession(true);
-    	String error = (String)session.getAttribute("Error");
-        if (error == null) {
-            req.setAttribute("Error", error);
-            session.removeAttribute("Error");
+    	String error = (String)session.getAttribute("error");
+        if (error != null) {
+            req.setAttribute("error", error);
+            session.removeAttribute("error");
         }
     	return "index";
     }
@@ -79,18 +79,16 @@ public class ReservationController {
     public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
     	// model.addAttribute("str", "111");
     	// request.setAttribute("mes", "heh");
-    	if (bindingResult.hasErrors()) {
-            session.setAttribute("Error", "Binding Result Error!");
-        } else {
-            user = (User)model.get("user");
-            try {
-                // int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
-                String pas = jdbcTemplate.queryForObject("SELECT password FROM users WHERE userName = ?", new Object[] {user.getName()}, String.class);
-        	    if (pas != user.getPassword())
-                    session.setAttribute("Error", "Incorrect Password!");
-            }catch(EmptyResultDataAccessException e) {
-        	    session.setAttribute("Error", "Username Not Found!");
-            }
+        user = (User)model.get("user");
+        try {
+            // int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
+            String pas = jdbcTemplate.queryForObject("SELECT password FROM users WHERE userName = ?", new Object[] {user.getName()}, String.class);
+            if (!pas.equals(user.getPassword()))
+                session.setAttribute("error", "Incorrect Password!");
+            else
+                session.setAttribute("currentUser", user.getName());
+        } catch(EmptyResultDataAccessException e) {
+            session.setAttribute("error", "Username Not Found!");
         }
         return "redirect:homepage";
     }
