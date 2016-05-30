@@ -64,12 +64,12 @@ public class ReservationController {
     @RequestMapping({"","/homepage"})
     public String Homepage(final User user, HttpServletRequest req) {
     	HttpSession session = req.getSession(true);
-    	User currentUser = (User) session.getAttribute("currentUser");
-    	if (currentUser != null) {
-    		return "result";
-    	} else {
-            return "index";
-    	}
+    	String error = (String)session.getAttribute("error");
+        if (error != null) {
+            req.setAttribute("error", error);
+            session.removeAttribute("error");
+        }
+    	return "index";
     }
     
     @RequestMapping({"/book"})
@@ -79,22 +79,20 @@ public class ReservationController {
     
     @RequestMapping("/login")
     public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
-    	model.addAttribute("str", "111");
-    	request.setAttribute("mes", "heh");
-    	if (bindingResult.hasErrors()) {
-            return "index";
-        }
+    	// model.addAttribute("str", "111");
+    	// request.setAttribute("mes", "heh");
         user = (User)model.get("user");
         try {
-        	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
-        	if (count > 0) {
-        		request.getSession().setAttribute("currentUser", user);
-        		return "result";
-        	}
-        }catch(EmptyResultDataAccessException e) {
-        	return "index";
+            // int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
+            String pas = jdbcTemplate.queryForObject("SELECT password FROM users WHERE userName = ?", new Object[] {user.getName()}, String.class);
+            if (!pas.equals(user.getPassword()))
+                session.setAttribute("error", "Incorrect Password!");
+            else
+                session.setAttribute("currentUser", user.getName());
+        } catch(EmptyResultDataAccessException e) {
+            session.setAttribute("error", "Username Not Found!");
         }
-    	return "index";
+        return "redirect:homepage";
     }
 
     @RequestMapping("/logout")
