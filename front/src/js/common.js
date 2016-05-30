@@ -8,7 +8,7 @@
                     opacity:0.3
                 });
             }
-            $("header .right").delegate('a', 'click', function(event) {
+            $("header .login-signup").delegate('a', 'click', function(event) {
                 var target = $(event.target).data("modal");
                 showModal("#" + target);
             });
@@ -19,6 +19,15 @@
                     opacity:0
                 });
             });
+            $("#user-button").click(function(event) {
+                $("#dropdown-menu").removeClass('hidden');
+            });
+            $(window).click(function(event) {
+                if (event.target.id != "user-button") {
+                    $("#dropdown-menu").addClass('hidden');
+                }
+            });
+            
         })();
     });
 })(window);

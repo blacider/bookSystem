@@ -14,10 +14,10 @@
         <div class="content">
             <ul class="left">
                 <li class="active">
-                    <a href="/"  th:href="@{/}" >bookSystem</a>
+                    <a href="/" th:href="@{/}">bookSystem</a>
                 </li>
             </ul>
-            <ul class="right">
+            <ul class="right login-signup" hidden>
                 <li>
                     <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
                 </li>
@@ -25,6 +25,16 @@
                     <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
                 </li>
             </ul>
+            <ul class="right">
+                <li>
+                    <a id="user-button" href="javascript:void(0)">blacider</a>
+                </li>
+            </ul>
+            <div id="dropdown-menu" class="hidden">
+                <ul>
+                    <a href="/app/logout" th:href="@{/logout}"><li>登出</li></a>
+                </ul>
+            </div>
         </div>
     </header>
     <div class="content" id="main">
