@@ -91,7 +91,19 @@ public class ReservationController {
         } catch(EmptyResultDataAccessException e) {
             session.setAttribute("error", "Username Not Found!");
         }
-        return "redirect:homepage";
+        String history = request.getParameter("history").toString();
+        String[] strarray=history.split("/");
+        String destination; 
+        if (strarray.length == 2) {
+        	destination = "/";
+        } else {
+        	destination = strarray[2];
+        	for (int i = 3;i < strarray.length;i++) {
+        		destination = destination + "/" + strarray[i];
+        	}
+        }
+        String path = "redirect:" + destination.toString();
+        return path;
     }
 
     @RequestMapping("/logout")
