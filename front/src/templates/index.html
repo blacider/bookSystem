@@ -80,12 +80,12 @@
         <div class="modal-head">
             <h1>登录</h1>
         </div>
-        <form action="#" th:action="@{/homepage}" th:object="${user}" method="post">
+        <form action = "${pageContext.request.contextPath}/homepage}" method="post">
             <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required  th:field="*{name}">
+                <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required th:field="*{password}">
+                <input type="password" placeholder="请输入密码" required name="password">
             </div>
             <input class="login-submit" name = "login" type="submit" value="登录">
         </form>
