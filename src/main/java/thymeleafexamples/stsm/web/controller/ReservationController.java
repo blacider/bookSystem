@@ -113,13 +113,14 @@ public class ReservationController {
     }
     
     @RequestMapping("/signup")
-    public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
+    public String Signup(User user, final BindingResult bindingResult, final ModelMap model, HttpSession session) {
         if (bindingResult.hasErrors()) {
             return "signup";
         }
         jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)", user.getName(), user.getPassword());
         this.userService.add(user);
         model.put("user", user);
-        return "result";
+        session.setAttribute("currentUser", user.getName());
+        return "redirect:/";
     }
 }
