@@ -96,6 +96,12 @@ public class ReservationController {
         }
     	return "index";
     }
+
+    @RequestMapping("/logout")
+    public String Logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:homepage";
+    }
     
     @RequestMapping(value={"/homepage","/book"}, params={"signup"})
     public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
