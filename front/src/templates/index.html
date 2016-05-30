@@ -80,13 +80,14 @@
         <div class="modal-head">
             <h1>登录</h1>
         </div>
-        <form th:action="@{/login}" method="post">
+        <form id="login-form" th:action="@{/login}" method="post">
             <div class="border-wrap">
                 <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
                 <input type="password" placeholder="请输入密码" required name="password">
             </div>
+            <input type="text" name="history" style="display:none">
             <input class="login-submit" type="submit" value="登录">
         </form>
     </div>

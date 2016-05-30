@@ -27,7 +27,10 @@
                     $("#dropdown-menu").addClass('hidden');
                 }
             });
-            
+            $("#login-form").submit(function(event) {
+                this.history.value = window.location.pathname;
+                return true;
+            });
         })();
     });
 })(window);
