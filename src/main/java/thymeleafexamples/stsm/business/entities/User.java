@@ -27,6 +27,7 @@ public class User {
     private String name = null;
     private String password = null;
     
+    
     public User() {
         super();
     }
