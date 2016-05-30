@@ -36,6 +36,7 @@ public class SpringServletInitializer extends AbstractDispatcherServletInitializ
 
     public SpringServletInitializer() {
         super();
+        
     }
 
     protected WebApplicationContext createServletApplicationContext() {
@@ -64,6 +65,7 @@ public class SpringServletInitializer extends AbstractDispatcherServletInitializ
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
+        servletContext.getSessionCookieConfig().setMaxAge(10000);
         servletContext.addListener(new SessionListener());
     }
 }

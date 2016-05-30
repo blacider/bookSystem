@@ -19,8 +19,10 @@
  */
 package thymeleafexamples.stsm.web.controller;
 
+import java.net.HttpCookie;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -62,8 +64,6 @@ public class ReservationController {
     @RequestMapping({"","/homepage"})
     public String Homepage(final User user, HttpServletRequest req) {
     	HttpSession session = req.getSession(true);
-    	
-    	session.setMaxInactiveInterval(10000);
     	User currentUser = (User) session.getAttribute("currentUser");
     	if (currentUser != null) {
     		return "result";
