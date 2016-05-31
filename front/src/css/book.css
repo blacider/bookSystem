@@ -81,7 +81,6 @@
 }
 #cinema-list {
     position: relative;
-    height: 100px;
 }
 #cinema-list:first-child {
     border-top: 1px solid #f0f0f0;
@@ -91,7 +90,7 @@
 }
 #cinema-list .cinema-item {
     display: block;
-    height: 100%;
+    height: 100px;
     border-bottom: 1px solid #f0f0f0;
 }
 .cinema-position {
@@ -141,4 +140,7 @@
 .button:hover {
     border-bottom: 3px solid #eb6120;
 }
-
+#book {
+    width: 630px;
+    height: 480px;
+}

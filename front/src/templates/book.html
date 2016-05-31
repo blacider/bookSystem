@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/book.css" th:href="@{/css/book.css}">
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="../js/common.js" th:src="@{/js/common.js}"></script>
-    <script src="../js/book.js" th:src="@{/js/common.js}"></script>
+    <script src="../js/book.js" th:src="@{/js/book.js}"></script>
 </head>
 <body>
     <header>
@@ -68,7 +68,145 @@
         </div>
         <h2 class="title">上映影院</h2>
         <ul id="cinema-list">
-            <li class="cinema-item">
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
+                <div class="cinema-left">
+                    <div class="cinema-title">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+            <li class="cinema-item" data-id="1">
                 <div class="cinema-left">
                     <div class="cinema-title">
                         广州五月花电影城
@@ -122,6 +260,25 @@
         </div>
         <div class="modal-head">
             <h1>注册</h1>
+        </div>
+        <form action="#" th:action="@{/signup}"method="post">
+            <div class="border-wrap">
+                <input type="text" placeholder="请输入用户名" required name="name">
+            </div>
+            <div class="border-wrap">
+                <input type="password" placeholder="请输入密码">
+            </div>
+            <div class="border-wrap">
+                <input type="password" placeholder="请确认密码" required name="password">
+            </div>
+            <input class="login-submit" type="submit" value="注册">
+        </form>
+    </div>
+    <div class="modal" id="book">
+        <div class="close icon">
+        </div>
+        <div class="modal-head">
+            <h1>选座购票</h1>
         </div>
         <form action="#" th:action="@{/signup}"method="post">
             <div class="border-wrap">
