@@ -32,4 +32,16 @@ public class ThearterTestForDatabaseOperationController {
         return "test";
     }
     
+    @RequestMapping({"/findThearterByName"})
+    public String FindThearterByName() {
+    	System.out.println("this just is a test");
+    	
+    	Theater newTh = new Theater();
+    	newTh = thearterService.findTheaterByName("国家大妓院");
+    	System.out.println(newTh.getId() + newTh.getTheaterName() +
+    			newTh.getTheaterLocation() + newTh.getTheaterPhone() +
+    			newTh.getTheaterComment());
+    	
+        return "test";
+    }
 }

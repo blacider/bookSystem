@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Service;
 
 import thymeleafexamples.stsm.business.entities.Theater;
-import thymeleafexamples.stsm.business.entities.User;
 
 @Service
 public class TheaterService {
@@ -58,8 +57,32 @@ public class TheaterService {
     	return th;
     }
     
-    public Theater findThearterByName(String name) {
+    public Theater findTheaterByName(String name) {
+    	
+    	// find in the buffer theater list first
+    	for (int i = 0; i < bufferTheaterList.size(); i++) {
+    		Theater temp = bufferTheaterList.get(i);
+    		if (temp.getTheaterName() == name) {
+    			return temp;
+    		}
+    	}
+    	
     	final Theater th = new Theater();
+    	jdbcTemplate.query("SELECT * FROM theaters WHERE theaterName = ?",
+    			new Object[] {name}, new RowCallbackHandler() { 
+                    public void processRow(ResultSet rs) throws SQLException { 
+                        th.setId(rs.getInt("id")); 
+                        th.setTheaterName(rs.getString("theaterName"));
+                        th.setTheaterLocation(rs.getString("theaterLocation"));
+                        th.setTheaterPhone(rs.getString("theaterPhone"));
+                        th.setTheaterComment(rs.getString("theaterComment"));
+                    } 
+                });
+    	
+    	// add the result to the buffer
+    	if (th.getId() != null) {
+    		bufferTheaterList.add(th);
+    	}
     	return th;
     }
 }
