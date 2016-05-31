@@ -91,7 +91,19 @@ public class ReservationController {
         } catch(EmptyResultDataAccessException e) {
             session.setAttribute("error", "Username Not Found!");
         }
-        return "redirect:homepage";
+        String history = request.getParameter("history").toString();
+        String[] strarray=history.split("/");
+        String destination; 
+        if (strarray.length == 2) {
+        	destination = "/";
+        } else {
+        	destination = strarray[2];
+        	for (int i = 3;i < strarray.length;i++) {
+        		destination = destination + "/" + strarray[i];
+        	}
+        }
+        String path = "redirect:" + destination.toString();
+        return path;
     }
 
     @RequestMapping("/logout")
@@ -101,13 +113,14 @@ public class ReservationController {
     }
     
     @RequestMapping("/signup")
-    public String Signup(User user, final BindingResult bindingResult, final ModelMap model) {
+    public String Signup(User user, final BindingResult bindingResult, final ModelMap model, HttpSession session) {
         if (bindingResult.hasErrors()) {
             return "signup";
         }
         jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)", user.getName(), user.getPassword());
         this.userService.add(user);
         model.put("user", user);
-        return "result";
+        session.setAttribute("currentUser", user.getName());
+        return "redirect:/";
     }
 }
