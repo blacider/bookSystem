@@ -41,6 +41,8 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+
+import thymeleafexamples.stsm.business.services.MovieService;
 import thymeleafexamples.stsm.web.conversion.DateFormatter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -168,4 +170,10 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
      * Add formatter for class {@link thymeleafexamples.stsm.business.entities.Variety}
      * and {@link java.util.Date} in addition to the one registered by default
      */
+	@Bean(initMethod = "getAllMovie")
+	public MovieService movieService() {
+		MovieService movieService = new MovieService();
+		//movieService.getAllMovie();
+		return movieService;
+	}
 }

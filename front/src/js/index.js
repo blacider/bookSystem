@@ -4,9 +4,9 @@
             var container = $(".banner-container");
             container.delegate('a', 'click', function(event) {
                 var id = $(event.target).closest('.banner-item').data("id");
-                window.location.href = "/app/book";
+                //window.location.href = "/app/book";
                 //TODO
-                //window.location.href = "/book?id=" + id;
+                window.location.href = "/app/book?id=" + id;
                 event.preventDefault();
             });
             var list1 = container.find("ul");
