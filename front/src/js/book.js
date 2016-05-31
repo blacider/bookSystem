@@ -17,5 +17,12 @@
                 showBookModalById(id);
             });
         })();
+        (function timeSelectClickEvent() {
+            $("#time-select").delegate('span', 'click', function(event) {
+                var id = $(event.target).data("id");
+                $(".book-table").addClass('hidden');
+                $("#table-" + id).removeClass('hidden');
+            });
+        })();
     });
 })(window);

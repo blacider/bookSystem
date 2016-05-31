@@ -144,3 +144,51 @@
     width: 630px;
     height: 480px;
 }
+#time-select {
+    height: 65px;
+}
+#time-select span {
+    background: #ff658e;
+    border: #ff658e 1px solid;
+    color: #fff;
+    display: block;
+    float: left;
+    padding: 13px 10px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+#time-select span:hover {
+    opacity:0.75;
+}
+.book-table {
+    overflow-y:auto;
+    height: 260px;
+}
+.time-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    vertical-align: middle;
+}
+.time-table th {
+    font-size: 15px;
+    line-height: 44px;
+    width: 25%;
+    background: #F6F6F6;
+}
+.book-table .time-table td {
+    width: 25%;
+    font-size: 14px;
+    position: relative;
+    height: 62px;
+    vertical-align: middle;
+    border-bottom: 1px solid #F0F0F0;
+    color: #666;
+    text-align: center;
+}
+.price {
+    color: #ff658e !important;
+}
+.book-button {
+    margin:0 auto;
+}

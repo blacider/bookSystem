@@ -197,4 +197,9 @@ input {
     display: block;
     box-sizing: border-box;
 }
-
+.modal-body {
+    margin: 30px 20px auto 20px;
+}
+.button:hover {
+    opacity:0.75;
+}
