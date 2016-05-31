@@ -10,7 +10,6 @@
     position: relative;
 }
 .banner ul {
-    width: 50%;
     display: block;
     height: 100%;
     position: relative;
@@ -23,7 +22,7 @@
     float: left;
     background-color: white;
     border: 1px solid #f0f0f0;
-    margin-left: 19px;
+    margin-left: 16.5px;
     display: block;
 }
 .banner-item:hover {

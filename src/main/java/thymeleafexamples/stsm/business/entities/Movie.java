@@ -23,38 +23,26 @@ import java.util.*;
 
 
 public class Movie {
-
-    private Integer id = null;
+    private Integer movieId = null;
     private String movieName = null;
     
-    // 详细信息
     private List<String> movieActors = new ArrayList<String>();
-    // 电影简介
-    private String summary = null;
-    // 电影类型，如动作，战争，奇幻
+    private String movieSummary = null;
     private List<String> movieType = new ArrayList<String>();
-    // 电影国家，用字符串记录，可用枚举简化数据
-    private String belongCountry = null;
-    // 电影时长，单位 min
-    private Integer filmLength = null;
-    // 首映时间
-    private java.util.Date publishTime = new java.util.Date();
-    
-    // 显示有权播放该电影的电影场次列表
-    // 仅仅记录有版权的影院，而影院是否有提供该场次的电影不可知
+    private String movieBelongCountry = null;
+    private Integer movieFilmLength = null;
+    private java.util.Date moviePublishTime = new java.util.Date();
     private List<Integer> thearterList = new ArrayList<Integer>();
-    
-    
     public Movie() {
         super();
     }
 
 
-    public Integer getId() {
-        return this.id;
+    public Integer getMovieId() {
+        return this.movieId;
     }
-    public void setId(final Integer id) {
-        this.id = id;
+    public void setMovieId(final Integer id) {
+        this.movieId = id;
     }
     
     public String getMovieName() {
@@ -73,13 +61,13 @@ public class Movie {
     }
 
 
-	public String getSummary() {
-		return summary;
+	public String getMovieSummary() {
+		return movieSummary;
 	}
 
 
-	public void setSummary(String summary) {
-		this.summary = summary;
+	public void setMovieSummary(String summary) {
+		this.movieSummary = summary;
 	}
 
 
@@ -93,33 +81,33 @@ public class Movie {
 	}
 
 
-	public String getBelongCountry() {
-		return belongCountry;
+	public String getMovieBelongCountry() {
+		return movieBelongCountry;
 	}
 
 
-	public void setBelongCountry(String belongCountry) {
-		this.belongCountry = belongCountry;
+	public void setMovieBelongCountry(String belongCountry) {
+		this.movieBelongCountry = belongCountry;
 	}
 
 
-	public Integer getFilmLength() {
-		return filmLength;
+	public Integer getMovieFilmLength() {
+		return movieFilmLength;
 	}
 
 
-	public void setFilmLength(Integer filmLength) {
-		this.filmLength = filmLength;
+	public void setMovieFilmLength(Integer filmLength) {
+		this.movieFilmLength = filmLength;
 	}
 
 
-	public java.util.Date getPublishTime() {
-		return publishTime;
+	public java.util.Date getMoviePublishTime() {
+		return moviePublishTime;
 	}
 
 
-	public void setPublishTime(java.util.Date publishTime) {
-		this.publishTime = publishTime;
+	public void setMoviePublishTime(java.util.Date publishTime) {
+		this.moviePublishTime = publishTime;
 	}
 
 

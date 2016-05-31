@@ -12,23 +12,23 @@
             var list1 = container.find("ul");
             //不够7个时复制
             var aDoms = list1.find('.banner-item');
-            while (list1.find(".banner-item").length < 7) {
+            while (list1.find(".banner-item").length < 6) {
                 list1.append(aDoms.clone(true, true));
             }
             //改变 container 宽度至可以容纳两倍的列表
             var size = container.find('li').length;
-            container.width(size*169*2);
+            container.width(size*166.5*2);
             //复制列表
             var list2 = list1.clone(true);
             list1.after(list2);
             var current = 1;
             var moveTo = function(dest) {
                 if (dest == 0) {
-                    container.css('left', -size*169);
-                    dest = 8;
+                    container.css('left', -size*166.5);
+                    dest = size;
                 }
                 container.animate({
-                    left: -(dest-1)*169
+                    left: -(dest-1)*166.5
                 },function() {
                     current = dest;
                     if (dest > size) {
