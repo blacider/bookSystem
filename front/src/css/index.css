@@ -80,3 +80,133 @@ img {
     transform: rotate(180deg);
 }
 
+
+.hot-cinema {
+    margin-top: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.title {
+    height: 40px;
+    font-size: 25px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.underline {
+    height:1px;
+    width:100%;
+    background:#00CCFF;
+    overflow:hidden;
+}
+
+.cinema-item-left {
+    margin: 0 1px 2px -1px;
+    width: 50%;
+    height: 101px;
+    float: left;
+    background-color: white;
+}
+
+.cinema-item-left:hover {
+    /*border: 1px solid red;*/
+    /*margin: 0 0px 1px 0px;*/
+    background-color: #b4b4b4;
+}
+
+.cinema-item-right {
+    margin: 0 -1px 2px 1px;
+    width: 50%;
+    height: 101px;
+    float: left;
+    background-color: white;
+}
+
+.cinema-item-right:hover {
+    background-color: #b4b4b4;
+}
+
+.cinema-link {
+    width: 100%;
+    height: 100px;
+}
+
+.cinema-name {
+    margin: 15px 0 15px 10px;
+    font-size: 25px;
+    font-family: Georgia,Serif;
+    color: black;
+}
+
+.cinema-address {
+    margin: 2px 0 15px 15px;
+    font-size: 17px;
+    font-family: Georgia,Serif;
+    color: black;
+}
+
+
+.consult-fresh {
+    margin-top: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.consult-item-left {
+    margin: 0px 1px 1px -2px;
+    width: 50%;
+    height: 150px;
+    float: left;
+    background-color: white;
+}
+
+.consult-item-right {
+    margin: 0px -2px 1px 1px;
+    width: 50%;
+    height: 150px;
+    float: left;
+    background-color: white;
+}
+
+.consult-link {
+    width: 100%;
+    height: 35px;
+    margin: 15px 0 10px 10px;
+}
+
+.consult-link a {
+    font-size: 20px;
+    color: black;
+}
+
+.consult-link a:hover {
+    font-size: 20px;
+    color: green;
+    text-decoration: underline;
+}
+
+.consult-intro {
+    font-size: 13px;
+    height: 40px;
+    margin: 0px 10px 5px 10px;
+}
+
+.consult-detail-link {
+    width: 20%;
+    height: 20px;
+    margin: 15px 0 15px 10px;
+    float: right;
+}
+
+.consult-detail-link a {
+    font-size: 14px;
+    color: gray;
+}
+
+.movie-trailer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: block;
+    overflow: hidden;
+}
