@@ -19,10 +19,10 @@
  */
 package thymeleafexamples.stsm.web.controller;
 
-import java.net.HttpCookie;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,14 +33,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import thymeleafexamples.stsm.business.entities.Movie;
 import thymeleafexamples.stsm.business.entities.User;
+import thymeleafexamples.stsm.business.services.MovieService;
 import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
@@ -50,6 +47,9 @@ public class ReservationController {
 	
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private MovieService movieService;
     
     public ReservationController() {
         super();
@@ -68,6 +68,8 @@ public class ReservationController {
             req.setAttribute("error", error);
             session.removeAttribute("error");
         }
+        List<Movie> movies = movieService.getAllMovie();
+        req.setAttribute("movies", movies);
     	return "index";
     }
     

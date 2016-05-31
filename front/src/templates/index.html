@@ -45,18 +45,9 @@
         <div class="banner">
             <div class="banner-container">
                 <ul>
-                    <li data-id="1" class="banner-item">
+                    <li th:each="movie:${movies}" th:data-id="${movie.movieId}" class="banner-item">
                         <img src="../images/item1.jpeg" th:src="@{/images/item1.jpeg}" alt="img">
-                        <h5>魔兽1</h5>
-                        <a href="/book" th:href="@{/book}">
-                            <div class="button">
-                                购票
-                            </div>
-                        </a>
-                    </li>
-                    <li data-id="2" class="banner-item">
-                        <img src="../images/item1.jpeg" th:src="@{/images/item1.jpeg}" alt="img">
-                        <h5>魔兽2</h5>
+                        <h5 th:text="${movie.movieName}">魔兽1</h5>
                         <a href="/book" th:href="@{/book}">
                             <div class="button">
                                 购票

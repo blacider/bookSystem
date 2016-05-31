@@ -26,13 +26,15 @@ public class Movie {
     private Integer movieId = null;
     private String movieName = null;
     
-    private List<String> movieActors = new ArrayList<String>();
+    private String movieActors = null;
     private String movieSummary = null;
-    private List<String> movieType = new ArrayList<String>();
+    private String movieDirector = null;
+    private String movieTypes = null;
     private String movieBelongCountry = null;
     private Integer movieFilmLength = null;
     private java.util.Date moviePublishTime = new java.util.Date();
     private List<Integer> thearterList = new ArrayList<Integer>();
+    private boolean movieOnShow = null != null;
     public Movie() {
         super();
     }
@@ -52,11 +54,11 @@ public class Movie {
         this.movieName = movieName;
     }
     
-    public List<String> getMovieActors() {
+    public String getMovieActors() {
     	return this.movieActors;
     }
     
-    public void setMovieActors(final List<String> movieActors) {
+    public void setMovieActors(final String movieActors) {
     	this.movieActors = movieActors;
     }
 
@@ -71,13 +73,13 @@ public class Movie {
 	}
 
 
-	public List<String> getMovieType() {
-		return movieType;
+	public String getMovieTypes() {
+		return movieTypes;
 	}
 
 
-	public void setMovieType(List<String> movieType) {
-		this.movieType = movieType;
+	public void setMovieTypes(String movieType) {
+		this.movieTypes = movieType;
 	}
 
 
@@ -119,5 +121,22 @@ public class Movie {
 	public void setThearterList(List<Integer> thearterList) {
 		this.thearterList = thearterList;
 	}
+	
+	public void setMovieOnShow(boolean onshow) {
+		this.movieOnShow = onshow;
+	}
+	
+	public boolean getMovieOnShow() {
+		return this.movieOnShow;
+	}
 
+
+	public String getMovieDirector() {
+		return movieDirector;
+	}
+
+
+	public void setMovieDirector(String movieDirector) {
+		this.movieDirector = movieDirector;
+	}
 }
