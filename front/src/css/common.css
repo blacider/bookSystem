@@ -30,10 +30,9 @@ header {
 footer {
     width: 100%;
     background: #eb6120;
-    position: absolute;
-    bottom: 0;
     padding: 20px 0 10px;
     background: #e4e4e4;
+    margin-top: 40px;
 }
 header .left {
     float: left;
@@ -90,7 +89,7 @@ header ul li a:hover {
     content: "";
 }
 .content {
-    width: 1200px;
+    width: 1000px;
     position: relative;
     margin:0 auto;
     height: 100%;
