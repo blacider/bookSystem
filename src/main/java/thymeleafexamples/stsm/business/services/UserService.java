@@ -19,9 +19,19 @@
  */
 package thymeleafexamples.stsm.business.services;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+// abandon user Repository, save the message in user service
+// also do the database operation here
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Service;
 import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.entities.repositories.UserRepository;
@@ -29,22 +39,87 @@ import thymeleafexamples.stsm.business.entities.repositories.UserRepository;
 @Service
 public class UserService {
     
-    @Autowired
-    private UserRepository userRepository;
-    
+    //@Autowired
+    //private UserRepository userRepository;
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	// storage all living users
+	private List<User> userList = new ArrayList<User>();
     
     public UserService() {
         super();
     }
     
+    public Integer findSameUser(User user) {
+    	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?",
+    			new Object[] {user.getName(), user.getPassword()},Integer.class);
+    	return count;
+    }
     
+    public boolean addNewUser(User user) {
+    	// if same username, return fasle
+    	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ?",
+    			new Object[] {user.getName()},Integer.class);
+    	if (0 != count) return false;
+    	
+    	jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)",
+    			user.getName(), user.getPassword());
+    	
+    	// query again to get user id ...so sad
+    	int result = jdbcTemplate.queryForObject("SELECT users.id FROM users WHERE userName = ?",
+    			new Object[] {user.getName()},Integer.class);
+    	System.out.println("result is : " + result);
+    	
+    	// add this user to the online userList
+    	user.setId(result);
+    	userList.add(user);
+    	
+    	return true;
+    }
+    
+    public boolean updateUserPsw(String psw, Integer id) {
+    	int result = jdbcTemplate.update("UPDATE users SET password= ? WHERE id = ?",
+    			psw, id);
+    	if (0 == result) {
+    		return false;
+    	} else {
+    		return true;
+    	}
+    }
+    
+    // only delete in the online user list
+    public boolean userLogout(Integer id) {
+    	for(int i = 0;i < userList.size(); i ++){
+            if ( userList.get(i).getId() == id ) {
+            	return true;
+            }
+        }
+    	return false;
+    }
+    
+    // find user by id
+    public User findUserById(Integer id) {
+    	final User u = new User();
+    	
+    	jdbcTemplate.query("SELECT * FROM users WHERE id = ?",
+    			new Object[] {id}, new RowCallbackHandler() { 
+                    public void processRow(ResultSet rs) throws SQLException { 
+                        u.setId(rs.getInt("id")); 
+                        u.setName(rs.getString("userName")); 
+                        u.setPassword(rs.getString("password"));
+                    } 
+                });
+    	
+    	return u;
+    }
     
     public List<User> findAll() {
-        return this.userRepository.findAll();
+        return this.userList;
     }
 
     public void add(final User user) {
-        this.userRepository.add(user);
+        this.userList.add(user);
     }
     
 }
