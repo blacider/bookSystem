@@ -14,10 +14,10 @@
         <div class="content">
             <ul class="left">
                 <li class="active">
-                    <a href="/"  th:href="@{/}" >bookSystem</a>
+                    <a href="/" th:href="@{/}">bookSystem</a>
                 </li>
             </ul>
-            <ul class="right">
+            <ul class="right login-signup" th:if="${session.currentUser eq null}">
                 <li>
                     <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
                 </li>
@@ -25,6 +25,16 @@
                     <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
                 </li>
             </ul>
+            <ul class="right" th:if="${session.currentUser ne null}">
+                <li>
+                    <a id="user-button" href="javascript:void(0)" th:text="${session.currentUser}">blacider</a>
+                </li>
+            </ul>
+            <div id="dropdown-menu" class="hidden" th:if="${session.currentUser ne null}">
+                <ul>
+                    <a href="/app/logout" th:href="@{/logout}"><li>登出</li></a>
+                </ul>
+            </div>
         </div>
     </header>
     <div class="content" id="main">
@@ -70,14 +80,15 @@
         <div class="modal-head">
             <h1>登录</h1>
         </div>
-        <form action="#" th:action="@{/homepage}" th:object="${user}" method="post">
+        <form id="login-form" th:action="@{/login}" method="post">
             <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required  th:field="*{name}">
+                <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请输入密码" required th:field="*{password}">
+                <input type="password" placeholder="请输入密码" required name="password">
             </div>
-            <input class="login-submit" name = "login" type="submit" value="登录">
+            <input type="text" name="history" style="display:none">
+            <input class="login-submit" type="submit" value="登录">
         </form>
     </div>
     <div class="modal" id="signin">
@@ -86,17 +97,17 @@
         <div class="modal-head">
             <h1>注册</h1>
         </div>
-        <form action="#" th:action="@{/homepage}" th:object="${user}" method="post">
+        <form action="#" th:action="@{/signup}"method="post">
             <div class="border-wrap">
-                <input type="text" placeholder="请输入用户名" required th:field="*{name}">
+                <input type="text" placeholder="请输入用户名" required name="name">
             </div>
             <div class="border-wrap">
                 <input type="password" placeholder="请输入密码">
             </div>
             <div class="border-wrap">
-                <input type="password" placeholder="请确认密码" required th:field="*{password}">
+                <input type="password" placeholder="请确认密码" required name="password">
             </div>
-            <input class="login-submit"  name = "signup" type="submit" value="注册">
+            <input class="login-submit" type="submit" value="注册">
         </form>
     </div>
 </body>

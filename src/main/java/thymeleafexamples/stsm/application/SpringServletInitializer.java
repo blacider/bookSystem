@@ -20,7 +20,10 @@
 package thymeleafexamples.stsm.application;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
+import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -33,9 +36,8 @@ public class SpringServletInitializer extends AbstractDispatcherServletInitializ
 
     public SpringServletInitializer() {
         super();
+        
     }
-
-
 
     protected WebApplicationContext createServletApplicationContext() {
         final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
@@ -59,5 +61,11 @@ public class SpringServletInitializer extends AbstractDispatcherServletInitializ
         encodingFilter.setForceEncoding(true);
         return new Filter[] { encodingFilter };
     }
-
+    
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.getSessionCookieConfig().setMaxAge(10000);
+        servletContext.addListener(new SessionListener());
+    }
 }
