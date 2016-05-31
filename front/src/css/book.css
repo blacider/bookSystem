@@ -192,3 +192,6 @@
 .book-button {
     margin:0 auto;
 }
+.time-active {
+    background-color: #F5265D!important;
+}

@@ -20,6 +20,8 @@
         (function timeSelectClickEvent() {
             $("#time-select").delegate('span', 'click', function(event) {
                 var id = $(event.target).data("id");
+                $("#time-select span").removeClass('time-active');
+                $(event.target).addClass('time-active')
                 $(".book-table").addClass('hidden');
                 $("#table-" + id).removeClass('hidden');
             });
