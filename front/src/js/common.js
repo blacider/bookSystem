@@ -28,7 +28,7 @@
                 }
             });
             $("#login-form").submit(function(event) {
-                this.history.value = window.location.pathname;
+                this.history.value = "/app" + document.location.href.split("/app")[1];
                 return true;
             });
         })();
