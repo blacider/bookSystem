@@ -51,12 +51,14 @@ public class UserService {
         super();
     }
     
+    // return the count of user that has same name and password, it would be 1 if exist
     public Integer findSameUser(User user) {
     	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?",
     			new Object[] {user.getName(), user.getPassword()},Integer.class);
     	return count;
     }
     
+    // add a new user, return true if success and false if failure
     public boolean addNewUser(User user) {
     	// if same username, return fasle
     	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ?",
@@ -112,6 +114,12 @@ public class UserService {
                 });
     	
     	return u;
+    }
+    
+    public String getPasswordByUserName(String userName) {
+    	String psw = jdbcTemplate.queryForObject("SELECT users.password FROM users WHERE userName = ?",
+    			new Object[] {userName},String.class);
+    	return psw;
     }
     
     public List<User> findAll() {
