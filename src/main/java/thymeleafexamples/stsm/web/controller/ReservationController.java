@@ -73,6 +73,7 @@ public class ReservationController {
     
     @RequestMapping({"/book"})
     public String Book(final User user) {
+    	System.out.println("==== is destroyed ====");
         return "book";
     }
     
