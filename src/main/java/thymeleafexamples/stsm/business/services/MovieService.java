@@ -37,20 +37,22 @@ import org.springframework.stereotype.Service;
 import thymeleafexamples.stsm.business.entities.User;
 import thymeleafexamples.stsm.business.entities.Movie;
 
-@Service
 public class MovieService {
     
     //@Autowired
     //private UserRepository userRepository;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	//storage All Movies
+	private List<Movie> movieList = new ArrayList<Movie>();
     
     public MovieService() {
-        super();
+    	movieList = new ArrayList<Movie>();
     }
     
     public List<Movie> getAllMovie() {
-    	List<Movie> movieList = new ArrayList<Movie>();
+    	movieList.clear();
     	List<Map<String, Object>> moviesInformation = jdbcTemplate.queryForList("SELECT * From movies");
     	for (int i = 0; i < moviesInformation.size(); i++) {
     		Movie newMovie = new Movie();
@@ -71,6 +73,17 @@ public class MovieService {
 		newMovie.setMovieOnShow(((Integer) MapModel.get("movieOnShow") == 1));
 		newMovie.setMoviePublishTime((Date) MapModel.get("moviePublishTime"));
 		newMovie.setMovieDirector(MapModel.get("movieDirector").toString());
+		newMovie.setMovieBelongCountry(MapModel.get("movieBelongCountry").toString());
 		return newMovie;
     }
+
+	public Movie getMovieByMovieId(String movieId) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < movieList.size(); i++) {
+			if (movieList.get(i).getMovieId().toString().equals(movieId)) {
+				return movieList.get(i);
+			}
+		}
+		return null;
+	}
 }
