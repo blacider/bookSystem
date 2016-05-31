@@ -37,8 +37,8 @@ import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
 public class ReservationController {
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+	//@Autowired
+	//JdbcTemplate jdbcTemplate;
 	
     @Autowired
     private UserService userService;
@@ -69,8 +69,10 @@ public class ReservationController {
         }
         user = (User)model.get("user");
         try {
-        	int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
+        	int count = userService.findSameUser(user);
+        			//jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
         	if (count > 0) {
+        		// model.addAttribute("str", "999");
         		return "result";
         	}
         }catch(EmptyResultDataAccessException e) {
@@ -84,9 +86,14 @@ public class ReservationController {
         if (bindingResult.hasErrors()) {
             return "signup";
         }
-        jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)", user.getName(), user.getPassword());
-        this.userService.add(user);
-        model.put("user", user);
-        return "result";
+        boolean flag = userService.addNewUser(user);
+        // jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)", user.getName(), user.getPassword());
+        // this.userService.add(user);
+        if (flag) {
+	        model.put("user", user);
+	        return "result";
+        } else {
+        	return "signup";
+        }
     }
 }

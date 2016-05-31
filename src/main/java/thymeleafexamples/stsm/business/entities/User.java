@@ -27,10 +27,10 @@ public class User {
     private String name = null;
     private String password = null;
     
+    
     public User() {
         super();
     }
-
 
     public Integer getId() {
         return this.id;
