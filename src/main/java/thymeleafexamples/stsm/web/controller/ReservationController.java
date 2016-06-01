@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -41,9 +39,6 @@ import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
 public class ReservationController {
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-	
 	@Autowired
     private UserService userService;
     
@@ -81,19 +76,15 @@ public class ReservationController {
     
     @RequestMapping("/login")
     public String Login(User user,final BindingResult bindingResult, ModelMap model, HttpServletRequest request, HttpSession session) {
-    	// model.addAttribute("str", "111");
-    	// request.setAttribute("mes", "heh");
         user = (User)model.get("user");
-        try {
-            // int count = jdbcTemplate.queryForObject("SELECT count(*) FROM users WHERE userName = ? AND password = ?", new Object[] {user.getName(), user.getPassword()},Integer.class);
-            String pas = jdbcTemplate.queryForObject("SELECT password FROM users WHERE userName = ?", new Object[] {user.getName()}, String.class);
-            if (!pas.equals(user.getPassword()))
+        String pas = userService.getPasswordByUserName(user.getName()); 
+        if (pas == null)
+            session.setAttribute("error", "Username Not Found!");
+        else if (!pas.equals(user.getPassword()))
                 session.setAttribute("error", "Incorrect Password!");
             else
                 session.setAttribute("currentUser", user.getName());
-        } catch(EmptyResultDataAccessException e) {
-            session.setAttribute("error", "Username Not Found!");
-        }
+
         String history = request.getParameter("history").toString();
         String[] strarray=history.split("/");
         String destination; 
@@ -120,10 +111,11 @@ public class ReservationController {
         if (bindingResult.hasErrors()) {
             return "signup";
         }
-        jdbcTemplate.update("INSERT INTO users(userName, password) VALUES (?,?)", user.getName(), user.getPassword());
-        this.userService.add(user);
-        model.put("user", user);
-        session.setAttribute("currentUser", user.getName());
+        if (this.userService.addNewUser(user)) {
+            model.put("user", user);
+            session.setAttribute("currentUser", user.getName());
+        }
         return "redirect:/";
     }
 }
+

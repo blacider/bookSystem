@@ -31,6 +31,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Service;
 import thymeleafexamples.stsm.business.entities.User;
@@ -117,8 +118,12 @@ public class UserService {
     }
     
     public String getPasswordByUserName(String userName) {
-    	String psw = jdbcTemplate.queryForObject("SELECT users.password FROM users WHERE userName = ?",
-    			new Object[] {userName},String.class);
+    	String psw;
+        try {
+            psw = jdbcTemplate.queryForObject("SELECT users.password FROM users WHERE userName = ?", new Object[] {userName},String.class);
+        } catch (EmptyResultDataAccessException e) {
+            psw = null;
+        }
     	return psw;
     }
     
@@ -126,7 +131,7 @@ public class UserService {
         return this.userList;
     }
 
-    public void add(final User user) {
+    private void add(final User user) {
         this.userList.add(user);
     }
     
