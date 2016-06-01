@@ -68,9 +68,9 @@
         </div>
         <h2 class="title">上映影院</h2>
         <ul id="cinema-list">
-            <li class="cinema-item" data-id="1">
+            <li class="cinema-item" th:each="theater:${theaters}" th:data-id="${theater.id}">
                 <div class="cinema-left">
-                    <div class="cinema-title">
+                    <div class="cinema-title" th:text="${theater.theaterName}">
                         广州五月花电影城
                         <div class="score">
                             <div class="star">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cinema-position">
+                    <div class="cinema-position" th:text="${theater.theaterLocation}">
                         广州市越秀区中山五路68号五月花商业广场6楼
                     </div>
                 </div>
