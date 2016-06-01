@@ -62,6 +62,15 @@ public class TheaterService {
     	return th;
     }
     
+    public List<Theater> findTheatersByTheaterIds(List<Integer> ids) {
+    	List<Theater> theaterlist = new ArrayList<Theater>();
+    	for (int i = 0;i < ids.size(); i++) {
+    		Theater newTheater = this.findTheaterById(ids.get(i));
+    		theaterlist.add(newTheater);
+    	}
+		return theaterlist;
+    }
+    
     public Theater findTheaterByName(String name) {
     	
     	// find in the buffer theater list first
