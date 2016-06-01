@@ -33,8 +33,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import thymeleafexamples.stsm.business.entities.Movie;
+import thymeleafexamples.stsm.business.entities.Theater;
 import thymeleafexamples.stsm.business.entities.User;
+import thymeleafexamples.stsm.business.services.MovieCatalogService;
 import thymeleafexamples.stsm.business.services.MovieService;
+import thymeleafexamples.stsm.business.services.TheaterService;
 import thymeleafexamples.stsm.business.services.UserService;
 
 @Controller
@@ -44,6 +47,12 @@ public class ReservationController {
     
     @Autowired
     private MovieService movieService;
+    
+    @Autowired
+    private TheaterService theaterService;
+    
+    @Autowired
+    private MovieCatalogService movieCatalogService;
     
     public ReservationController() {
         super();
@@ -71,6 +80,9 @@ public class ReservationController {
     public String Book(final User user,@RequestParam(value="id", required=false, defaultValue="1") String movieId, ModelMap model) {
     	Movie movie = movieService.getMovieByMovieId(movieId);
     	model.addAttribute("movie",movie);
+    	List<Integer> theatersIDList = movieCatalogService.findTheaterIdList(movie.getMovieId());
+    	List<Theater> theaters = theaterService.findTheatersByTheaterIds(theatersIDList);
+    	model.addAttribute("theaters", theaters);
         return "book";
     }
     
