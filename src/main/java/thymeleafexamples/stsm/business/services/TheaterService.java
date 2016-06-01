@@ -85,4 +85,9 @@ public class TheaterService {
     	}
     	return th;
     }
+    
+    public List<Theater> findTheaterListByCity() {
+    	List<Theater> thList = new ArrayList<Theater>();
+    	return thList;
+    }
 }
