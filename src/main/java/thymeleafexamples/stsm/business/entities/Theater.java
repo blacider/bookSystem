@@ -9,6 +9,17 @@ public class Theater {
 	private String theaterLocation = null;
 	private String theaterPhone = null;
 	private String theaterComment = null;
+	private String theaterCity = null;
+	
+	public String MyToString() {
+		return id.toString() + " " + 
+				theaterName + " " + 
+				theaterLocation + " " +
+				theaterPhone + " " + 
+				theaterComment + " " 
+				+ theaterCity;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -62,5 +73,17 @@ public class Theater {
 	 */
 	public void setTheaterComment(String theaterComment) {
 		this.theaterComment = theaterComment;
+	}
+	/**
+	 * @return the theaterCity
+	 */
+	public String getTheaterCity() {
+		return theaterCity;
+	}
+	/**
+	 * @param theaterCity the theaterCity to set
+	 */
+	public void setTheaterCity(String theaterCity) {
+		this.theaterCity = theaterCity;
 	}
 }

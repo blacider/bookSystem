@@ -3,7 +3,9 @@ package thymeleafexamples.stsm.business.services;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +25,9 @@ public class TheaterService {
 	// storage all living users
 	private List<Theater> bufferTheaterList = new ArrayList<Theater>();
     
+	// storage the city we have load
+	private List<String> cityHaveLoad = new ArrayList<String>();
+	
     public TheaterService() {
         super();
     }
@@ -84,5 +89,76 @@ public class TheaterService {
     		bufferTheaterList.add(th);
     	}
     	return th;
+    }
+    
+    public List<Theater> findTheaterListByCity(String city) {
+    	
+    	boolean needToFindInDataBase = true;
+    	
+    	// check in buffer
+    	for (int i = 0; i < cityHaveLoad.size(); i++) {
+    		if (cityHaveLoad.get(i).equals(city)) {
+    			// System.out.println("find in buffer!");
+    			needToFindInDataBase = false;
+    		}
+    	}
+    	
+    	if (needToFindInDataBase) {
+    		// System.out.println("find in dataBase");
+    		cityHaveLoad.add(city);
+    		
+	    	// find in database
+	    	List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+	    			"SELECT * FROM moviejava.theaters where theaterCity = ?",
+	    			new Object[] {city}); 
+	    	
+	    	return ChangeMapListToList(rows);
+    	} else {
+    		// find in buffer
+    		// System.out.println("find in buffer");
+    		List<Theater> thList = new ArrayList<Theater>();
+    		
+    		for (int i = 0; i < bufferTheaterList.size(); i++) {
+    			Theater temp = bufferTheaterList.get(i);
+    			if (temp.getTheaterCity().toString().equals(city)) {
+    				thList.add(bufferTheaterList.get(i));
+    			}
+    		}
+    		
+    		return thList;
+    	}
+    }
+    
+    private List<Theater> ChangeMapListToList(List rows) {
+    	List<Theater> thList = new ArrayList<Theater>();
+
+    	Iterator it = rows.iterator(); 
+    	while(it.hasNext()) { 
+    	    Map theaterMap = (Map) it.next(); 
+    	    Theater newTh = new Theater();
+    	    
+    	    // for safe
+    	    Integer newThId = new Integer(-1);
+    	    try {
+    	    	newThId = Integer.parseInt(theaterMap.get("id").toString());
+    	    } catch(Exception e) {
+    	    	e.printStackTrace();
+    	    }
+    	    
+    	    newTh.setId(newThId);
+    	    newTh.setTheaterCity(theaterMap.get("theaterCity").toString());
+    	    newTh.setTheaterComment(theaterMap.get("theaterComment").toString());
+    	    newTh.setTheaterLocation(theaterMap.get("theaterLocation").toString());
+    	    newTh.setTheaterName(theaterMap.get("theaterName").toString());
+    	    newTh.setTheaterPhone(theaterMap.get("theaterPhone").toString());
+    	    
+    	    if (newTh.getId() != null) {
+    	    	thList.add(newTh);
+    	    	// also add into buffer
+    	    	bufferTheaterList.add(newTh);
+    	    }
+    	}
+    	
+    	return thList;
     }
 }
