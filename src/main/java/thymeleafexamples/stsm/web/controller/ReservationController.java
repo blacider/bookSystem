@@ -53,11 +53,11 @@ public class ReservationController {
     @Autowired
     private MovieService movieService;
     
-    //@Autowired
-    //private TheaterService theaterService;
+    @Autowired
+    private TheaterService theaterService;
     
-    //@Autowired
-   // private MovieCatalogService movieCatalogService;
+    @Autowired
+    private MovieCatalogService movieCatalogService;
     
     public ReservationController() {
         super();
@@ -85,9 +85,9 @@ public class ReservationController {
     public String Book(final User user,@RequestParam(value="id", required=false, defaultValue="1") String movieId, ModelMap model) {
     	Movie movie = movieService.getMovieByMovieId(movieId);
     	model.addAttribute("movie",movie);
-    	//List<Integer> theatersIDList = movieCatalogService.findTheaterIdList(movie.getMovieId());
-    	//List<Theater> theaters = theaterService.findTheatersByTheaterIds(theatersIDList);
-    	//model.addAttribute("theaters", theaters);
+    	List<Integer> theatersIDList = movieCatalogService.findTheaterIdList(movie.getMovieId());
+    	List<Theater> theaters = theaterService.findTheatersByTheaterIds(theatersIDList);
+    	model.addAttribute("theaters", theaters);
         return "book";
     }
     
