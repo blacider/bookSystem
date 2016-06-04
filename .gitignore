@@ -8,4 +8,5 @@ bin/
 *.iml
 src/main/webapp/
 build
+*.swp
 
