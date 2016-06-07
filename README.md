@@ -5,15 +5,15 @@
 bookSystem 是一个电影订票系统。
 
 ## 所用工具
-    ### 前端
+* 前端:
 	   * node
 	   * grunt
 	   * jQuery
-    ### 后端
+* 后端:
 	   * mevan
 	   * spring
 	   * jdk
-       * mysql
+	   * mysql
 
 	
 ## start
