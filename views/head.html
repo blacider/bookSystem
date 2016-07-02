@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/jquery.jgrowl.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.jgrowl.min.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body>
+    <header>
+        <div class="content">
+            <ul class="left">
+                <li class="active">
+                    <a href="/">bookSystem</a>
+                </li>
+            </ul>
+<% if (!isLogin) {%>
+            <ul class="right login-signup">
+                <li>
+                    <a data-modal="login" id="login-button" href="javascript:void(0)">登录</a>
+                </li>
+                <li>
+                    <a data-modal="signin" id="signin-button" href="javascript:void(0)">注册</a>
+                </li>
+            </ul>
+<%} else {%>
+            <ul class="right">
+                <li>
+                    <a id="user-button" href="javascript:void(0)"><%=username%></a>
+                </li>
+            </ul>
+            <div id="dropdown-menu" class="hidden">
+                <ul>
+                    <a href="/users/logout"><li>登出</li></a>
+                </ul>
+            </div>
+<%}%>
+        </div>
+    </header>

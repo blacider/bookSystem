@@ -1,0 +1,248 @@
+<% include head.html %>
+<link rel="stylesheet" href="css/book.css">
+
+    <div class="path">
+        <p class="content path-text">
+            <a href="/" th:href="@{/}"><span>首页</span></a> <span>>></span> 订票
+        </p>
+    </div>
+    <div class="content" id="main">
+        <img src="../images/item1.jpeg" th:src="@{/images/item1.jpeg}" class="film-img" alt="img">
+        <div class="score">
+            <div class="star">
+                <div class="star star-main">
+                    
+                </div>
+            </div>
+            <div class="num">
+                <em>9</em><span>.5</span>
+            </div>
+        </div>
+        <div class="film-content">
+            <h2>魔兽</h2>
+            <div class="film-content-main" th:inline="text">
+                <p><span>导演：</span>[[${movie.movieDirector}]]</p>
+                <p><span>主演：</span>[[${movie.movieActors}]]</p>
+                <p><span>类型：</span>[[${movie.movieTypes}]]</p>
+                <p><span>国家：</span>[[${movie.movieBelongCountry}]]</p>
+                <p><span>首映：</span>[[${movie.moviePublishTime}]]</p>
+                <p><span>片长：</span>[[${movie.movieFilmLength}]]</p>
+                <p><span>剧情：</span>[[${movie.movieSummary}]]</p>
+            </div>
+        </div>
+        <h2 class="title">上映影院</h2>
+        <ul id="cinema-list">
+            <li class="cinema-item" th:each="theater:${theaters}" th:data-id="${theater.id}">
+                <div class="cinema-left">
+                    <div class="cinema-title" th:text="${theater.theaterName}">
+                        广州五月花电影城
+                        <div class="score">
+                            <div class="star">
+                                <div class="star star-main">
+                                </div>
+                            </div>
+                            <div class="num">
+                                <em>9</em><span>.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cinema-position" th:text="${theater.theaterLocation}">
+                        广州市越秀区中山五路68号五月花商业广场6楼
+                    </div>
+                </div>
+                <div class="cinema-right">
+                    <div class="cinema-book button">选座购票</div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="moda" id="book">
+        <div class="close icon">
+        </div>
+        <div class="modal-head">
+            <h1>选座购票</h1>
+        </div>
+        <div class="modal-body">
+            <div id="time-select">
+                <span class="time-active" data-id="1">06.08(周三)</span>
+                <span data-id="2">06.09(周四)</span>
+            </div>
+            <table class="time-table">
+                <thead>
+                    <tr>
+                        <th>
+                            放映时间
+                        </th>
+                        <th>
+                            语言版本
+                        </th>
+                        <th>
+                            价格
+                        </th>
+                        <th>
+                            选座
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="book-table" id="table-1">
+                <table class="time-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="book-table hidden" id="table-2">
+                <table class="time-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                00:00
+                            </td>
+                            <td>
+                                英语/3D
+                            </td>
+                            <td class="price">
+                                ￥40.0
+                            </td>
+                            <td>
+                                <div class="button book-button">
+                                    选座
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/js/book.js"></script>
+<% include foot.html %>

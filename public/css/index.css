@@ -1,0 +1,283 @@
+
+#main {
+    background-color: white;
+}
+.banner {
+    margin-top: 30px;
+    height: 332px;
+    background-color: #F2F2F2;
+    overflow: hidden;
+    position: relative;
+}
+.banner ul {
+    display: block;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+.banner-item {
+    list-style: none;
+    width: 148px;
+    height: 330px;
+    float: left;
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    margin-left: 16.5px;
+    display: block;
+}
+.banner-item:hover {
+    border: 1px solid red;
+}
+.banner-container {
+    position: relative;
+    height: 100%;
+}
+.banner-item h5 {
+    color:black;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+img {
+    width: 100%;
+}
+.button{
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 5px;
+    color: white;
+    height: 30px;
+    width: 83px;
+    line-height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    letter-spacing: 1px;
+    background: #eb6120;
+    border-bottom: 2px solid #C1480E;
+    border-top: 2px solid #eb6120;
+}
+.button:hover {
+    border-bottom: 2px solid #eb6120;
+}
+.nav {
+    position: absolute;
+    background-image: url(../images/left.png);
+    height: 35px;
+    top: 120px;
+    width: 19px;
+    cursor:pointer;
+    z-index: 2;
+    opacity: 0.4;
+}
+.nav:hover {
+    opacity:1;
+}
+.prev {
+    left: -25px;
+}
+.next {
+    right: -25px;
+    transform: rotate(180deg);
+}
+
+
+.hot-cinema {
+    margin-top: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.title {
+    height: 40px;
+    font-size: 25px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.underline {
+    height:1px;
+    width:100%;
+    background:#00CCFF;
+    overflow:hidden;
+}
+
+.cinema-item {
+    margin: 1px 1px 1px 1px;
+    width: 33%;
+    height: 101px;
+    float: left;
+    background-color: white;
+}
+
+.cinema-item:hover {
+    background-color: #b4b4b4;
+}
+
+.cinema-item-left {
+    margin: 0 1px 2px -1px;
+    width: 50%;
+    height: 101px;
+    float: left;
+    background-color: white;
+}
+
+.cinema-item-left:hover {
+    /*border: 1px solid red;*/
+    /*margin: 0 0px 1px 0px;*/
+    background-color: #b4b4b4;
+}
+
+.cinema-item-right {
+    margin: 0 -1px 2px 1px;
+    width: 50%;
+    height: 101px;
+    float: left;
+    background-color: white;
+}
+
+.cinema-item-right:hover {
+    background-color: #b4b4b4;
+}
+
+.cinema-link {
+    width: 100%;
+    height: 100px;
+}
+
+.cinema-name {
+    margin: 15px 0 15px 10px;
+    font-size: 20px;
+    font-family: Georgia,Serif;
+    color: black;
+}
+
+.cinema-address {
+    margin: 2px 0 15px 15px;
+    font-size: 12px;
+    font-family: Georgia,Serif;
+    color: black;
+}
+
+
+.consult-fresh {
+    margin-top: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.consult-item-left {
+    margin: 0px 1px 1px -2px;
+    width: 50%;
+    height: 150px;
+    float: left;
+    background-color: white;
+}
+
+.consult-item-right {
+    margin: 0px -2px 1px 1px;
+    width: 50%;
+    height: 150px;
+    float: left;
+    background-color: white;
+}
+
+.consult-link {
+    width: 100%;
+    height: 35px;
+    margin: 15px 0 10px 10px;
+}
+
+.consult-link a {
+    font-size: 20px;
+    color: black;
+}
+
+.consult-link a:hover {
+    font-size: 20px;
+    color: green;
+    text-decoration: underline;
+}
+
+.consult-intro {
+    font-size: 13px;
+    height: 40px;
+    margin: 0px 10px 5px 10px;
+}
+
+.consult-detail-link {
+    width: 20%;
+    height: 20px;
+    margin: 15px 0 15px 10px;
+    float: right;
+}
+
+.consult-detail-link a {
+    font-size: 14px;
+    color: gray;
+}
+
+.movie-trailer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.movie-item {
+    width: 24%;
+    float: left;
+    margin: 1px 2px 1px 2px;
+    display: block;
+    overflow: hidden;
+}
+
+.movie-item a {
+    width: 24%;
+    height: 250px;
+    float: left;
+}
+/*
+.movie-item a {
+    width: 100%;
+    height: 250px;
+}
+*/
+.movie-item-view {
+    position: absolute;
+    width: 24%;
+    height: 180px;
+}
+
+.movie-item-img {
+    width: 100%;
+    height: 180px;
+}
+
+.movie-item-info-bg {
+
+}
+
+.movie-item-info {
+    color: white;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.movie-item-s-mask {
+
+}
+
+.movie-item-s-play {
+
+}
+
+.movie-item-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    padding-left: 20px; 
+    top: 240px;
+    display: block;
+}
