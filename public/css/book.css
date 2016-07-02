@@ -1,0 +1,197 @@
+#main {
+    background-color: white;
+}
+.film-img {
+    width: 200px;
+    height: 250px;
+    border: 1px solid #D2D2D2;
+    display: block;
+    float: left;
+    margin-left:25px;
+}
+.path .content, #main {
+    background-color: white;
+}
+.path-text {
+    color: black;
+    padding: 20px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.path a {
+    float: left;
+}
+.path span{
+    font-size: 14px;
+    color: red;
+    margin:5px;
+}
+.film-content {
+    margin-left: 250px;
+}
+.film-content-main {
+    margin-top: 25px;
+}
+.film-content-main span {
+    color: #999;
+    padding-right: 3px;
+}
+.film-content-main p {
+    padding-right: 25px;
+    text-align: justify;
+    color: #666;
+    font-size: 13px;
+    margin-top: 7px;
+}
+.star {
+    width: 95px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-image: url(../images/star.png);
+    float: left;
+}
+.star-main {
+    width: 85px;
+    background-position: 0px -22px;
+}
+.score {
+    position: absolute;
+    right: 80px;
+    top: 20px;
+}
+.num {
+    margin-left: 20px;
+    float: left;
+    color: #ff658e;
+    font-size: 36px;
+}
+.num span {
+    position: relative;
+    top: -10px;
+    font-size: 22px;
+}
+.title {
+    padding: 20px;
+    border-bottom: 1px solid orangered;
+}
+#cinema-list p, #cinema-list h3 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#cinema-list {
+    position: relative;
+}
+#cinema-list:first-child {
+    border-top: 1px solid #f0f0f0;
+}
+#cinema-list .cinema-item:hover {
+    background: #FBFBFB;
+}
+#cinema-list .cinema-item {
+    display: block;
+    height: 100px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cinema-position {
+    padding: 15px 30px;
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    bottom: 0;
+}
+.cinema-title {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #666;
+}
+.cinema-left {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 600px;
+}
+.cinema-title .score {
+    top: 15px;
+    transform: scale(0.7);
+    right: 0;
+}
+.cinema-right {
+    float: right;
+    position: relative;
+    right: 30px;
+}
+
+.button{
+    text-align: center;
+    margin: 30px auto;
+    border-radius: 5px;
+    color: white;
+    height: 35px;
+    width: 100px;
+    line-height: 35px;
+    overflow: hidden;
+    letter-spacing: 1px;
+    background: #eb6120;
+    border-bottom: 3px solid #C1480E;
+    border-top: 3px solid #eb6120;
+    cursor: pointer;
+}
+.button:hover {
+    border-bottom: 3px solid #eb6120;
+}
+#book {
+    width: 630px;
+    height: 480px;
+}
+#time-select {
+    height: 65px;
+}
+#time-select span {
+    background: #ff658e;
+    border: #ff658e 1px solid;
+    color: #fff;
+    display: block;
+    float: left;
+    padding: 13px 10px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+#time-select span:hover {
+    opacity:0.75;
+}
+.book-table {
+    overflow-y:auto;
+    height: 260px;
+}
+.time-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    vertical-align: middle;
+}
+.time-table th {
+    font-size: 15px;
+    line-height: 44px;
+    width: 25%;
+    background: #F6F6F6;
+}
+.book-table .time-table td {
+    width: 25%;
+    font-size: 14px;
+    position: relative;
+    height: 62px;
+    vertical-align: middle;
+    border-bottom: 1px solid #F0F0F0;
+    color: #666;
+    text-align: center;
+}
+.price {
+    color: #ff658e !important;
+}
+.book-button {
+    margin:0 auto;
+}
+.time-active {
+    background-color: #F5265D!important;
+}

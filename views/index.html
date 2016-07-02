@@ -1,0 +1,152 @@
+<% include head.html%>
+<link rel="stylesheet" href="css/index.css">
+<script src="js/index.js"></script>
+    <div class="content" id="main">
+        <div class="prev nav">
+        </div>
+        <div class="next nav">
+        </div>
+        <div class="banner">
+            <div class="banner-container">
+                <ul>
+                    <li th:each="movie:${movies}" th:data-id="${movie.movieId}" class="banner-item">
+                        <img src="images/item1.jpeg" th:src="@{/images/item1.jpeg}" alt="img">
+                        <h5>魔兽1</h5>
+                        <a href="/book">
+                            <div class="button">
+                                购票
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--     <div class="content hot-cinema" id="cinema">
+        <div class="title">
+            <h3>热门影院</h3>
+        </div>
+        <div class="underline"></div>
+        <div>
+            <ul>
+                <li class="cinema-item">
+                    <div class="cinema-item-div">
+                        <a class="cinema-link" href="/cinema" target="_blank">
+                            <p class="cinema-name">
+                                广州市第二工人文化宫电影城
+                            </p>
+                            <p class="cinema-address">
+                                海珠区同福东路640号市二宫内（近市二宫地铁）
+                            </p>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="cinema-item">
+                    <div class="cinema-item-div">
+                        <a class="cinema-link" href="/cinema" target="_blank">
+                            <p class="cinema-name">
+                                平安大戏院
+                            </p>
+                            <p class="cinema-address">
+                                广州市荔湾区十甫路125号（上下九步行街内）
+                            </p>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="cinema-item">
+                    <div class="cinema-item-div">
+                        <a class="cinema-link" href="/cinema" target="_blank">
+                            <p class="cinema-name">
+                                广州市第二工人文化宫电影城
+                            </p>
+                            <p class="cinema-address">
+                                海珠区同福东路640号市二宫内（近市二宫地铁）
+                            </p>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="cinema-item">
+                    <div class="cinema-item-div">
+                        <a class="cinema-link" href="/cinema" target="_blank">
+                            <p class="cinema-name">
+                                平安大戏院
+                            </p>
+                            <p class="cinema-address">
+                                广州市荔湾区十甫路125号（上下九步行街内）
+                            </p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content consult-fresh" id="consult">
+        <div class="title">
+            <h3>咨询抢鲜</h3>
+        </div>
+        <div class="underline"></div>
+        <div>
+            <dl class="consult-item-left">
+                <dt class="consult-link">
+                    <a href="/consult" target="_blank">那英唱《何以笙箫默》，黄晓明借机表白</a>
+                </dt>
+                <dd class="consult-intro">4月19日，那英、高晓松、黄晓明走进校园发布《何以笙箫默》电影主题插曲《默》，那英暌违五年再度发……</dd>
+                <dd class="consult-detail-link">
+                    <a href="/consult" target="_blank">详情</a>
+                </dd>
+            </dl>
+
+            <dl class="consult-item-right">
+                <dt class="consult-link">
+                    <a href="/consult" target="_blank">那英唱《何以笙箫默》，黄晓明借机表白</a>
+                </dt>
+                <dd class="consult-intro">4月19日，那英、高晓松、黄晓明走进校园发布《何以笙箫默》电影主题插曲《默》，那英暌违五年再度发……</dd>
+                <dd class="consult-detail-link">
+                    <a href="/consult" target="_blank">详情</a>
+                </dd>
+            </dl>
+
+        </div>
+    </div> -->
+
+<!--     <div class="content movie-trailer" id="trailer">
+        <div class="title">
+            <h3>最热电影预告</h3>
+        </div>
+        <div class="underline"></div>
+        <div>
+            <ul>
+                <li class="movie-item">
+                    <a href="http://vod.kankan.com/v/90/90036/522525.shtml?id=731032" target="_blank" static="stp=po&amp;videoid=123752" title="片花：吴彦祖之古尔丹角色介绍">
+                        <div class="movie-item-view">
+                            <img class="movie-item-img" src="http://img.movie.kankan.kanimg.com/submovie_img/90/90036/16052602_3_200x150.jpg?201605291015">
+                            <span class="movie-item-info-bg"></span>
+                            <span class="movie-item-info">00:46</span>
+                            <span class="movie-item-s-mask"></span>
+                            <span class="movie-item-s-play"></span>
+                        </div>
+                        <div class="movie-item-title">片花：吴彦祖之古尔丹角..</div>
+                    </a>
+                </li>
+
+                <li class="movie-item">
+                    <a href="http://vod.kankan.com/v/90/90036/522525.shtml?id=731032" target="_blank" static="stp=po&amp;videoid=123752" title="片花：吴彦祖之古尔丹角色介绍">
+                        <div class="movie-item-view">
+                            <img class="movie-item-img" src="http://img.movie.kankan.kanimg.com/submovie_img/90/90036/16052602_3_200x150.jpg?201605291015">
+                            <span class="movie-item-info-bg"></span>
+                            <span class="movie-item-info">00:46</span>
+                            <span class="movie-item-s-mask"></span>
+                            <span class="movie-item-s-play"></span>
+                        </div>
+                        <div class="movie-item-title">片花：吴彦祖之古尔丹角..</div>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div> -->
+<% include foot.html%>
