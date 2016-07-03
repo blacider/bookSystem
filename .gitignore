@@ -1,11 +1,2 @@
 node_modules
-.classpath
-.project
-target/
-bin/
-.settings/
-.idea/
-*.iml
-src/main/webapp/
-build
-
+*.log

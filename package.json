@@ -1,12 +1,20 @@
 {
-  "name": "bookSystem",
-  "version": "1.0.0",
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0"
+  "name": "bookSystem2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.2.3",
+    "express": "~4.13.4",
+    "express-session": "^1.13.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "mysql": "latest",
+    "serve-favicon": "~2.3.0"
   }
 }
