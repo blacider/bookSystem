@@ -22,16 +22,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/book', function(req, res, next) {
-  console.log(req.query.id);
-  movieDao.queryUserNumById(req.query.id, function(err, result){
-    movie = {}
-    for (var i in result[0]) {
-      eval("movie."+i+"=result[0][i]");
-    }
-    res.render('book', { 
-      title: 'Express',
-      movie: movie });
-  });
+  res.render('book', { title: 'Express' });
+});
+
+router.get('/test', function(req, res, next) {
+    //logger.log("/test" + JSON.stringify(req.body));
+    movieDao.queryAll(function(err, result) {
+      for (var i = 0; i < result.length;i++) {
+        console.log(result[i]['movieId']);
+        console.log(result[i]['movieName'])
+      }
+    })
 });
 
 module.exports = router;

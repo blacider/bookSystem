@@ -7,7 +7,7 @@
         </p>
     </div>
     <div class="content" id="main">
-        <img src="../images/item1.jpeg" th:src="@{/images/item1.jpeg}" class="film-img" alt="img">
+        <img src=<%=movie.moviePictureUrl%> class="film-img" alt="img">
         <div class="score">
             <div class="star">
                 <div class="star star-main">
@@ -19,15 +19,15 @@
             </div>
         </div>
         <div class="film-content">
-            <h2>魔兽</h2>
+            <h2><%=movie.movieName%></h2>
             <div class="film-content-main" th:inline="text">
-                <p><span>导演：</span>[[${movie.movieDirector}]]</p>
-                <p><span>主演：</span>[[${movie.movieActors}]]</p>
-                <p><span>类型：</span>[[${movie.movieTypes}]]</p>
-                <p><span>国家：</span>[[${movie.movieBelongCountry}]]</p>
-                <p><span>首映：</span>[[${movie.moviePublishTime}]]</p>
-                <p><span>片长：</span>[[${movie.movieFilmLength}]]</p>
-                <p><span>剧情：</span>[[${movie.movieSummary}]]</p>
+                <p><span>导演：</span><%=movie.movieDirector%></p>
+                <p><span>主演：</span><%=movie.movieActors%></p>
+                <p><span>类型：</span><%=movie.movieType%></p>
+                <p><span>国家：</span><%=movie.movieBelongCountry%></p>
+                <p><span>首映：</span><%=movie.moviePublishTime%></p>
+                <p><span>片长：</span><%=movie.movieFilmLength%></p>
+                <p><span>剧情：</span><%=movie.movieSummary%></p>
             </div>
         </div>
         <h2 class="title">上映影院</h2>
