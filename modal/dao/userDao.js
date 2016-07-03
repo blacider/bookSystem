@@ -1,16 +1,6 @@
-// dao/caseDao.js
-// 实现与MySQL交互
-// var mysql = require('mysql');
-// var $conf = require('../conf/db');
-// var $util = require('../util/util');
-// var $sql = {
-//     save:"INSERT INTO users(userName,password) VALUES(?,?)",
-//     queryUserByName: 'SELECT * FROM users WHERE userName = ?',
-//     queryUserNumByName: "SELECT count(*) FROM users WHERE userName = ?"
-// };
+// dao/userDao.js
+// user抽象类
 
-// // 使用连接池，提升性能
-// var pool  = mysql.createPool($util.extend({}, $conf.mysql));
 
 var Table = require('./table.js');
 

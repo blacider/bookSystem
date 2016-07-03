@@ -47,7 +47,7 @@ Table.prototype.insert = function(obj, callback) {
     var attrs = [], values = [];
     for (item in obj) {
         attrs.push(item);
-        values.push(obj[item]);
+        values.push((typeof obj[item] == "string")?("'"+obj[item]+"'"):(obj[item]));
     }
     var sqlText = "INSERT INTO " + this.name + "(" + attrs.join(",") + ") VALUES("+ values.join(",") + ")";
     query(sqlText, callback);
