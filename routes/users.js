@@ -17,7 +17,7 @@ router.get('/logout', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     logger.log("/login" + JSON.stringify(req.body));
     userDao.queryUserNumByName(req.body.name, function(err, result) {
-        console.log(JSON.stringify(result));
+        logger.log("/signup:" + JSON.stringify(result));
         if (result[0]["count(*)"] == 0) {
             req.session.error = "请输入正确用户名";
             res.redirect(req.body.url);
@@ -41,11 +41,13 @@ router.post('/signup', function(req, res, next) {
         pass:req.body.password
     });
     userDao.queryUserNumByName(req.body.name, function(err, result) {
-        if (result != 0) {
+        logger.log("/signup:" + JSON.stringify(result));
+        if (result[0]['count(*)'] != 0) {
             req.session.error = "用户名已存在,请重新注册";
             res.redirect(req.body.url);
         } else {
             user.save(function(err, result) {
+                logger.log("/signup:" + JSON.stringify(result));
                 req.session.error = "注册成功,请登录";
                 res.redirect(req.body.url);
             });
