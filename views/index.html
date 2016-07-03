@@ -9,15 +9,19 @@
         <div class="banner">
             <div class="banner-container">
                 <ul>
-                    <li th:each="movie:${movies}" th:data-id="${movie.movieId}" class="banner-item">
-                        <img src="images/item1.jpeg" th:src="@{/images/item1.jpeg}" alt="img">
-                        <h5>魔兽1</h5>
+                    <% for (movieNum in movies) {
+                        var movie = movies[movieNum];
+                    %>
+                    <li data-id=<%=movie.movieId%> class="banner-item">
+                        <img src=<%=movie.moviePictureUrl%> alt="img">
+                        <h5><%=movie.movieName%></h5>
                         <a href="/book">
                             <div class="button">
                                 购票
                             </div>
                         </a>
                     </li>
+                    <%}%>
                 </ul>
             </div>
         </div>
