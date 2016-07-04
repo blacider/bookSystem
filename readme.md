@@ -20,16 +20,16 @@ bookSystem 是一个电影订票系统。
 
 ## run
 
-> * 方法一：
+* 方法一：
 
-> > 1. `npm install`
-> > 2. `npm start`
+> 1. `npm install`
+> 2. `npm start`
 
-> * 方法二(修改后台代码后不用重启):
+* 方法二(修改后台代码后不用重启):
 
-> > 1. `npm install`
-> > 2. `npm install supervisor -g`
-> > 3. `supervisor ./bin/www`
+> 1. `npm install`
+> 2. `npm install supervisor -g`
+> 3. `supervisor ./bin/www`
 
 ## 目录结构
 > * bin: 执行目录
