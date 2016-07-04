@@ -7,16 +7,19 @@ bookSystem 是一个电影订票系统。
 ## 所用工具
 
 > ### 前端
+
 > * node
 > * jQuery
 > * angular.js
 
 > ### 后端
+
 > * node
 > * express4
 > * mysql
 
 ## run
+
 > * 方法一：
 > > 1. `npm install`
 > > 2. `npm start`
