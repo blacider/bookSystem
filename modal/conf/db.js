@@ -2,9 +2,9 @@
 // MySQL数据库联接配置
 module.exports = {
   mysql: {
-    host: '127.0.0.1', 
-    user: 'root',
-    password: 'password',
+    host: '157.7.108.76', 
+    user: 'gay',
+    password: 'gaygaygay',
     database:'moviejava',
     port: 3306
   }
