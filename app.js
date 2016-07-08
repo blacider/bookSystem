@@ -51,15 +51,9 @@ app.use(function(req, res, next) {
   }
   res.locals.url = req.originalUrl;
   res.locals["error"] = error;
-  // var url = req.originalUrl;
   if (!req.session.hasOwnProperty("name")) {
     res.locals.isLogin = false;
-    // if (url != "/login" && url != "/signup")
-      // return res.redirect("/login");
   } else {
-    // if (url == "/login" || url == "/signup") {
-      // return res.redirect("/");
-    // }
     res.locals.isLogin = true;
     res.locals.username = req.session.name;
   }

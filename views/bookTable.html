@@ -1,0 +1,63 @@
+            <div id="time-select">
+                <%  var i = 0;
+                    for (item in tableData) {
+                    i++;
+                %>
+                    <%if (i == 1) {%>
+                        <span class="time-active" data-id="<%=i%>"><%=item%></span>
+                    <%} else {%>
+                        <span data-id="<%=i%>"><%=item%></span>
+                    <% }
+                } %>
+            </div>
+            <table class="time-table">
+                <thead>
+                    <tr>
+                        <th>
+                            放映时间
+                        </th>
+                        <th>
+                            语言版本
+                        </th>
+                        <th>
+                            价格
+                        </th>
+                        <th>
+                            选座
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <%  var i = 0;
+                for (item in tableData) {
+                i++;
+            %>
+                <%if (i == 1) {%>
+                <div class="book-table" id="table-<%=i%>">
+                <%} else {%>
+                <div class="book-table hidden" id="table-<%=i%>">
+                <% }
+                    <table class="time-table">
+                        <tbody>
+                        <%for (var j = 0; j < tableData[item].length; j++) {%>
+                            <tr>
+                                <td>
+                                    <%=tableData[item][j]["showingTime"]%>
+                                </td>
+                                <td>
+                                    <%=tableData[item][j]["showingType"]%>
+                                </td>
+                                <td class="price">
+                                    <%=tableData[item][j]["showingPrice"]%>
+                                </td>
+                                <td>
+                                    <div data-id="<%=tableData[item][j]['showingId']%>" class="button book-button">
+                                        选座
+                                    </div>
+                                </td>
+                            </tr>
+                        <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            } %>
