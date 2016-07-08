@@ -43,6 +43,16 @@ Table.prototype.queryByAttr = function(attr, value, callback) {
     query(sqlText, callback);
 };
 
+Table.prototype.queryByAttrs = function(obj, opt, callback) {
+    var conditions = [];
+    for (item in obj) {
+        var con = item + " = " + ((typeof obj[item] == "string")?("'"+obj[item]+"'"):(obj[item]));
+        conditions.push(con);
+    }
+    var sqlText = "SELECT * FROM " + this.name + " WHERE " + conditions.join(" "+opt+" ");
+    query(sqlText, callback);
+};
+
 Table.prototype.insert = function(obj, callback) {
     var attrs = [], values = [];
     for (item in obj) {
