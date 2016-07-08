@@ -24,6 +24,6 @@ Showing.queryAll = function(callback) {
 };
 
 Showing.queryShowingByMovieIdAndTheaterId = function(movieId, theaterId, callback) {
-    oNewObj = {"movieId":movieId, "theaterId":theaterId}
+    var oNewObj = {"movieId":Number(movieId), "theaterId":Number(theaterId)}
     showingTable.queryByAttrs(oNewObj, 'and', callback);
 } 

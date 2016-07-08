@@ -75,12 +75,12 @@ router.get('/book', function(req, res, next) {
 
 router.get('/getTimeTable', function(req, res, next) {
     //logger.log("/test" + JSON.stringify(req.body));
-    DayMap = ["周日","周一","周二","周三","周四","周五","周六"]
+    var DayMap = ["周日","周一","周二","周三","周四","周五","周六"]
     showingDao.queryShowingByMovieIdAndTheaterId(req.query.movieId,req.query.theaterId,function(err, result) {
-      data = {}
+      var data = {}
       for (var i = 0; i < result.length;i++) {
-        myDate = result[i]['showingTime'];
-        sString = "";
+        var myDate = result[i]['showingTime'];
+        var sString = "";
         sString += myDate.getMonth();
         sString += ".";
         sString += myDate.getDate();
@@ -100,8 +100,11 @@ router.get('/getTimeTable', function(req, res, next) {
           data[sString].push(newShowing);
         }
       }
-      console.log(data)
-    })
+      logger.log(JSON.stringify(data));
+      res.render('bookTable', {
+        tableData: data
+      });
+    });
 });
 
 module.exports = router;
