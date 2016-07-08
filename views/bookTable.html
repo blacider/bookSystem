@@ -39,25 +39,27 @@
                 <% }
                     <table class="time-table">
                         <tbody>
+                        <%for (var j = 0; j < tableData[item].length; j++) {%>
                             <tr>
                                 <td>
                                     00:00
-                                    <%=tableData[item].%>
+                                    <%=tableData[item][j]["showingTime"]%>
                                 </td>
                                 <td>
                                     英语/3D
-                                    <%=tableData[item].%>
+                                    <%=tableData[item][j]["showingType"]%>
                                 </td>
                                 <td class="price">
                                     ￥40.0
-                                    <%=tableData[item].%>
+                                    <%=tableData[item][j]["showingPrice"]%>
                                 </td>
                                 <td>
-                                    <div data-id="<%=tableData[item].%>" class="button book-button">
+                                    <div data-id="<%=tableData[item][j]['showingId']%>" class="button book-button">
                                         选座
                                     </div>
                                 </td>
                             </tr>
+                        <%}%>
                         </tbody>
                     </table>
                 </div>
