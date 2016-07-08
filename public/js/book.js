@@ -7,8 +7,21 @@
         });
     }
     function showBookModalById(id) {
-        // TODO getDataById
-        showModal("#book");
+        showLoading();
+        $.ajax({
+            url: "/getTimeTable",
+            type: 'GET',
+            dataType: 'html',
+            data: {
+                movieId: movieId,
+                theaterId:id
+            }
+        })
+        .done(function(data) {
+            $(".modal-body").empty().append(data);
+            showModal("#book");
+            hideLoading();
+        });
     }
     jQuery(document).ready(function($) {
         (function bookButtonEvent() {
@@ -18,7 +31,7 @@
             });
         })();
         (function timeSelectClickEvent() {
-            $("#time-select").delegate('span', 'click', function(event) {
+            $(".modal-body").delegate('#time-select span', 'click', function(event) {
                 var id = $(event.target).data("id");
                 $("#time-select span").removeClass('time-active');
                 $(event.target).addClass('time-active')
