@@ -28,6 +28,7 @@ router.post('/login', function(req, res, next) {
                     res.redirect("/login");
                 } else {
                     req.session.name = req.body.name;
+                    req.session.userId = result.id;
                     res.redirect(req.body.url);
                 }
             });
