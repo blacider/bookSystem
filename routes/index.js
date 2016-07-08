@@ -3,6 +3,7 @@ var router = express.Router();
 var movieDao = require("../modal/dao/movieDao.js");
 var theaterDao = require("../modal/dao/theaterDao.js");
 var movieCatlogDao = require("../modal/dao/movieCatlogDao.js")
+var showingDao = require("../modal/dao/showingDao.js")
 var logger = require("../util/logger.js");
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -72,5 +73,35 @@ router.get('/book', function(req, res, next) {
   });
 });
 
+router.get('/getTimeTable', function(req, res, next) {
+    //logger.log("/test" + JSON.stringify(req.body));
+    DayMap = ["周日","周一","周二","周三","周四","周五","周六"]
+    showingDao.queryShowingByMovieIdAndTheaterId(req.query.movieId,req.query.theaterId,function(err, result) {
+      data = {}
+      for (var i = 0; i < result.length;i++) {
+        myDate = result[i]['showingTime'];
+        sString = "";
+        sString += myDate.getMonth();
+        sString += ".";
+        sString += myDate.getDate();
+        sString += "(";
+        sString += DayMap[myDate.getDay()];
+        sString += ")";
+        console.log(sString);
+        newShowing = {
+          showingTime: myDate.toLocaleString(),
+          showingType: result[i]['showingType'],
+          showingPrice: result[i]['showingPrice']
+        }
+        if (data[sString] == undefined) {
+          data[sString] = [];
+          data[sString].push(newShowing);
+        } else {
+          data[sString].push(newShowing);
+        }
+      }
+      console.log(data)
+    })
+});
 
 module.exports = router;
