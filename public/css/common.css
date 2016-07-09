@@ -12,6 +12,21 @@ a {
     text-decoration:none;
     color:white;
 }
+.path .content, #main {
+    background-color: white;
+}
+.path-text {
+    color: black;
+    padding: 20px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.path span{
+    font-size: 14px;
+    color: red;
+    margin:5px;
+}
 li {
     text-decoration: none;
     list-style: none;
@@ -31,7 +46,6 @@ footer {
     background: #eb6120;
     padding: 20px 0 10px;
     background: #e4e4e4;
-    margin-top: 40px;
 }
 header .left {
     float: left;

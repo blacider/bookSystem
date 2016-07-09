@@ -9,23 +9,6 @@
     float: left;
     margin-left:25px;
 }
-.path .content, #main {
-    background-color: white;
-}
-.path-text {
-    color: black;
-    padding: 20px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-.path a {
-    float: left;
-}
-.path span{
-    font-size: 14px;
-    color: red;
-    margin:5px;
-}
 .film-content {
     margin-left: 250px;
 }
