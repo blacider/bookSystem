@@ -212,7 +212,7 @@ input {
     z-index: 1032;
     width: 50px;
     height: 50px;
-    position: absolute;
+    position: fixed;
     overflow: auto;
 }
 

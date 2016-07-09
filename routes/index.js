@@ -91,7 +91,8 @@ router.get('/getTimeTable', function(req, res, next) {
         newShowing = {
           showingTime: myDate.toLocaleString(),
           showingType: result[i]['showingType'],
-          showingPrice: result[i]['showingPrice']
+          showingPrice: result[i]['showingPrice'],
+          showingId: result[i]['showingId']
         }
         if (data[sString] == undefined) {
           data[sString] = [];
