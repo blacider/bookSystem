@@ -49,7 +49,7 @@ router.get('/book', function(req, res, next) {
       console.log(result[i]);
       theaterIds.push(result[i]["theaterId"])
     }
-    finish = 0
+    var finish = 0;
     for (var i = 0; i < theaterIds.length; i++) {
       theaterDao.queryTheaterById(theaterIds[i], function(err, result) {
         finish = finish+1;
@@ -71,6 +71,19 @@ router.get('/book', function(req, res, next) {
       });
     }
   });
+});
+
+router.get('/chooseSeat', function(req, res, next) {
+    showingDao.queryShowingByShowingId(req.query.showingId, function(error, result) {
+      if (result.length == 0) {
+        next();
+      } else {
+        res.render('seats', {
+          title: '选择座位',
+          showingData: result[0]
+        });
+      }
+    });
 });
 
 router.get('/getTimeTable', function(req, res, next) {

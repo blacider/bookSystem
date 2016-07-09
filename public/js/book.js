@@ -39,5 +39,10 @@
                 $("#table-" + id).removeClass('hidden');
             });
         })();
+        (function bookButtionClickEvent() {
+            $(".modal-body").delegate('.book-button', 'click', function(event) {
+                window.location.href = '/chooseSeat?showingId=' + $(event.target).data("id");
+            });
+        })();
     });
 })(window);

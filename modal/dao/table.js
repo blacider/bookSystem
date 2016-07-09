@@ -18,6 +18,10 @@ module.exports = Table;
 
 var query = function(sqlText, callback) {
     pool.getConnection(function(err, connection) {
+        if (err) {
+            logger.log(err);
+            return;
+        }
         connection.query(sqlText, function(err, result) {
             connection.release();
             logger.log("sql:" + sqlText + "\nresults: " + JSON.stringify(result) + "\nerror: " + JSON.stringify(err));

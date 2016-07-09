@@ -23,6 +23,10 @@ Showing.queryAll = function(callback) {
     showingTable.queryAll(callback);
 };
 
+Showing.queryShowingByShowingId = function(showingId, callback) {
+    showingTable.queryByAttr("showingId", showingId, callback);
+};
+
 Showing.queryShowingByMovieIdAndTheaterId = function(movieId, theaterId, callback) {
     var oNewObj = {"movieId":Number(movieId), "theaterId":Number(theaterId)}
     showingTable.queryByAttrs(oNewObj, 'and', callback);
