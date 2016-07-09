@@ -89,7 +89,7 @@ router.get('/getTimeTable', function(req, res, next) {
         sString += ")";
         console.log(sString);
         newShowing = {
-          showingTime: myDate.toLocaleString(),
+          showingTime: myDate.getHours() + "." + myDate.getMinutes(),
           showingType: result[i]['showingType'],
           showingPrice: result[i]['showingPrice'],
           showingId: result[i]['showingId']

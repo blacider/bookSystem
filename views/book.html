@@ -28,7 +28,7 @@
                 <p><span>主演：</span><%=movie.movieActors%></p>
                 <p><span>类型：</span><%=movie.movieType%></p>
                 <p><span>国家：</span><%=movie.movieBelongCountry%></p>
-                <p><span>首映：</span><%=movie.moviePublishTime%></p>
+                <p><span>首映：</span><%=movie.moviePublishTime.toLocaleDateString()%></p>
                 <p><span>片长：</span><%=movie.movieFilmLength%></p>
                 <p><span>剧情：</span><%=movie.movieSummary%></p>
             </div>
