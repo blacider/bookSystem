@@ -4,6 +4,7 @@ var movieDao = require("../modal/dao/movieDao.js");
 var theaterDao = require("../modal/dao/theaterDao.js");
 var movieCatlogDao = require("../modal/dao/movieCatlogDao.js")
 var showingDao = require("../modal/dao/showingDao.js")
+var roomDao = require("../modal/dao/roomDao.js")
 var logger = require("../util/logger.js");
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -74,17 +75,24 @@ router.get('/book', function(req, res, next) {
 });
 
 router.get('/chooseSeat', function(req, res, next) {
-    showingDao.queryShowingByShowingId(req.query.showingId, function(error, result) {
-      if (result.length == 0) {
-        next();
-      } else {
-        res.render('seats', {
-          title: '选择座位',
-          showingData: result[0]
-        });
+    roomDao.queryRoomByRoomId(req.body.roomId, function(error, result) {
+      mapString = result[0]['roomMap'];
+      roomCol = result[0]['roomCol'];
+      var roomRow = mapString.length/roomCol;
+      var i = 0;
+      map = [];
+      while (i < roomRow) {
+        var subString = mapString.substring(i*roomCol, (i+1)*roomCol);
+        map.push(subString);
+        i++;
       }
+      
+      res.render('seats', {
+          title:"Express",
+          map: map
+        });
+      });
     });
-});
 
 router.get('/getTimeTable', function(req, res, next) {
     //logger.log("/test" + JSON.stringify(req.body));
@@ -105,7 +113,8 @@ router.get('/getTimeTable', function(req, res, next) {
           showingTime: myDate.getHours() + "." + myDate.getMinutes(),
           showingType: result[i]['showingType'],
           showingPrice: result[i]['showingPrice'],
-          showingId: result[i]['showingId']
+          showingId: result[i]['showingId'],
+          roomId: result[i]['roomId']
         }
         if (data[sString] == undefined) {
           data[sString] = [];
