@@ -23,9 +23,9 @@ Seat.queryAll = function(callback) {
     seatTable.queryAll(callback);
 };
 
-Seat.queryCanBuySeatByShowingId = function(id,callback) {
-     var oNewObj = {"showingId":Number(id), "":Number(theaterId)}
-     seatTable.queryByAttr("showingId", id, callback);
+Seat.queryCannotBuySeatByShowingId = function(id,callback) {
+     var oNewObj = {"showingId":Number(id), "seatIsBought":1}
+     seatTable.queryByAttrs(oNewObj, 'and', callback);
 }
 
 Seat.updateSeatBySeatIsBought
