@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="film-content">
-            <h2><%=movie.movieName%></h2>
+            <h2 id="movieName" data-movieName="<%=movie.movieName%>"><%=movie.movieName%></h2>
             <div class="film-content-main" th:inline="text">
                 <p><span>导演：</span><%=movie.movieDirector%></p>
                 <p><span>主演：</span><%=movie.movieActors%></p>

@@ -42,7 +42,7 @@
                         <%for (var j = 0; j < tableData[item].length; j++) {%>
                             <tr>
                                 <td>
-                                    <%=tableData[item][j]["showingTime"]%>
+                                    <%=tableData[item][j]["showingTime"].getHours() + "." + tableData[item][j]["showingTime"].getMinutes()%>
                                 </td>
                                 <td>
                                     <%=tableData[item][j]["showingType"]%>
@@ -51,7 +51,7 @@
                                     <%=tableData[item][j]["showingPrice"]%>
                                 </td>
                                 <td>
-                                    <div data-id="<%=tableData[item][j]['showingId']%>" class="button book-button">
+                                    <div data-showingPrice="<%=tableData[item][j]['showingPrice']%>" data-roomId="<%=tableData[item][j]['roomId']%>" data-showingTime="<%=tableData[item][j]['showingTime'].toLocaleString()%>" class="button book-button">
                                         选座
                                     </div>
                                 </td>
@@ -61,3 +61,5 @@
                     </table>
                 </div>
             <% } %>
+<form id="chooseSeatForm" action="/chooseSeat" method="post" class="hidden">
+</form>

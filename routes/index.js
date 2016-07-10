@@ -74,24 +74,31 @@ router.get('/book', function(req, res, next) {
   });
 });
 
-router.get('/chooseSeat', function(req, res, next) {
-    roomDao.queryRoomByRoomId(req.body.roomId, function(error, result) {
-      mapString = result[0]['roomMap'];
-      roomCol = result[0]['roomCol'];
-      var roomRow = mapString.length/roomCol;
-      var i = 0;
-      map = [];
-      while (i < roomRow) {
-        var subString = mapString.substring(i*roomCol, (i+1)*roomCol);
-        map.push(subString);
-        i++;
-      }
+router.post('/chooseSeat', function(req, res, next) {
+    var data={
+      showingPrice: Number(req.body.showingPrice),
+      roomId: Number(req.body.roomId),
+      showingTime: req.body.showingTime,
+      movieName: req.body.movieName
+    }
+    res.json(data);
+    // roomDao.queryRoomByRoomId(req.body.roomId, function(error, result) {
+    //   mapString = result[0]['roomMap'];
+    //   roomCol = result[0]['roomCol'];
+    //   var roomRow = mapString.length/roomCol;
+    //   var i = 0;
+    //   map = [];
+    //   while (i < roomRow) {
+    //     var subString = mapString.substring(i*roomCol, (i+1)*roomCol);
+    //     map.push(subString);
+    //     i++;
+    //   }
       
-      res.render('seats', {
-          title:"Express",
-          map: map
-        });
-      });
+    //   res.render('seats', {
+    //       title:"Express",
+    //       map: map
+    //     });
+    //   });
     });
 
 router.get('/getTimeTable', function(req, res, next) {
@@ -110,11 +117,11 @@ router.get('/getTimeTable', function(req, res, next) {
         sString += ")";
         console.log(sString);
         newShowing = {
-          showingTime: myDate.getHours() + "." + myDate.getMinutes(),
+          showingTime: myDate,
           showingType: result[i]['showingType'],
           showingPrice: result[i]['showingPrice'],
           showingId: result[i]['showingId'],
-          roomId: result[i]['roomId']
+          roomId: result[i]['RoomId']
         }
         if (data[sString] == undefined) {
           data[sString] = [];

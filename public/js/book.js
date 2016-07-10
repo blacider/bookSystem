@@ -41,7 +41,20 @@
         })();
         (function bookButtionClickEvent() {
             $(".modal-body").delegate('.book-button', 'click', function(event) {
-                window.location.href = '/chooseSeat?showingId=' + $(event.target).data("id");
+                // price
+                var target = $(event.target);
+                var data = {
+                    showingPrice: target.data('showingprice'),
+                    roomId: target.data('roomid'),
+                    showingTime: target.data('showingtime'),
+                    movieName: $("#movieName").data('moviename')
+                };
+                var formDom = $("#chooseSeatForm");
+                for (item in data) {
+                    formDom.append('<input type="text" name="'+item+'" value="'+data[item]+'">')
+                }
+                formDom.submit();
+                //window.location.href = '/chooseSeat?showingId=' + $(event.target).data("id");
             });
         })();
     });
