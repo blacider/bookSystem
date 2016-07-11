@@ -11,8 +11,8 @@
             <div class="front">屏幕</div>                     
         </div> 
         <div class="booking-details"> 
-            <p>影片：<span>星际穿越3D</span></p> 
-            <p>时间：<span>11月14日 21:00</span></p> 
+            <p>影片：<span><%=showingData.movieName%></span></p> 
+            <p>时间：<span><%=showingData.showingTime%></span></p> 
             <p>座位：</p> 
             <ul id="selected-seats"></ul> 
             <p>票数：<span id="counter">0</span></p> 
@@ -33,18 +33,7 @@
             $total = $('#total'); //总计金额 
              
             var sc = $('#seat-map').seatCharts({ 
-                map: [  //座位图 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    '__________', 
-                    'aaaaaaaa__', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aa__aa__aa' 
-                ], 
+                map: '<%=showingData.map%>'.split(","),
                 legend : { //定义图例 
                     node : $('#legend'), 
                     items : [ 
@@ -81,7 +70,7 @@
                 } 
             }); 
             //已售出的座位 
-            sc.get(['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2']).status('unavailable'); 
+            sc.get('<%=sSeatStringList%>'.split(",")).status('unavailable'); 
                  
         }); 
         //计算总金额 
