@@ -3,7 +3,7 @@ function showLoading(){
 	    visibility:"visible",
 	    opacity:0.3
 	});
-	$(".loading").css("display","block");
+	$(".loadingContainer").css("display","block");
 }
 
 function hideLoading(){
@@ -11,5 +11,5 @@ function hideLoading(){
 	    visibility:"hidden",
 	    opacity:0
 	});
-	$(".loading").css("display","none");
+	$(".loadingContainer").css("display","none");
 }

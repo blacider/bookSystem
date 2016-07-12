@@ -2,6 +2,14 @@
     margin: 0;
     padding: 0;
 }
+.loadingContainer {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    right: 0;
+    position: absolute;
+}
 body {
     font: 12px/22px verdana,Arial,Helvetica,'宋体',sans-serif;
     color: #333;

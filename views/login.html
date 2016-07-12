@@ -51,14 +51,16 @@
                 life: 3000
             });
          }
-     });
-     $("#signup-form").submit(function(event) {
-        if (this.password.value != this.password_.value) {
-            $.jGrowl("两次密码不一致", {
-                life: 3000
-            });
-            return false;
-        }
-        return true;
+         $("#signup-form").submit(function(event) {
+            showLoading();
+            if (this.password.value != this.password_.value) {
+                $.jGrowl("两次密码不一致", {
+                    life: 3000
+                });
+                hideLoading();
+                return false;
+            }
+            return true;
+         });
      });
  </script>
