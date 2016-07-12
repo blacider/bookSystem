@@ -23,7 +23,13 @@
   border-top: 1px solid #ff4500;
 }
 
-.movie, .price, .theater, .room, .seat {
+.order-time {
+  font-size: 2em;
+  margin-left: 2%;
+  padding-bottom: 2%;
+  font-family: Tahoma,Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+}
+.movie, .price, .theater, .room, .seat, .show-time {
   display: inline-block;
   font-weight: bold;
   margin-right: 2%;
@@ -41,7 +47,8 @@
   margin-right: 3%;
   margin-top: 10px;
 }
-.order-list-content li .theater {
+.order-list-content li .theater,
+.order-list-content li .show-time {
   font-size: 1.5em;
 }
 .order-list-content li .room, 
