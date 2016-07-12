@@ -123,9 +123,11 @@ router.post('/chooseSeat', function(req, res, next) {
        console.log(map)
        showingData = {
          showingPrice:data.showingPrice,
+         movieId:data.movieId,
          movieName:data.movieName,
          map:map,
-         showingTime:data.showingTime
+         showingTime:data.showingTime,
+         showingId:data.showingId
        }
        console.log(data.showingId);
        seatDao.queryCannotBuySeatByShowingId(data.showingId, function(error, result) {
@@ -182,6 +184,21 @@ router.get('/getTimeTable', function(req, res, next) {
         tableData: data
       });
     });
+});
+
+router.post('/doBooking', function(req, res, next) {
+  seatsCor = req.body.seats;
+  showingId = req.body.showingId;
+  userId = req.session.userId;
+  seatsList = seatsCor.split(',');
+  for (var i in seatsList) {
+    var seatCor = seatsList[i].split('_');
+    var corX = Number(seatCor[0]);
+    var corY = Number(seatCor[1]);
+    seatDao.queryByCorXandCorY(showingId, corX, corY,function(error, result) {
+      console.log(result[0]);
+    });
+  }
 });
 
 module.exports = router;

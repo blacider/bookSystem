@@ -71,6 +71,8 @@ Table.prototype.delete = function(callback) {
 
 };
 
-Table.prototype.update = function() {
-
+Table.prototype.update = function(desart,desvalue, queryart, queryvalue, callback) {
+    var sqlText = "update "+ this.name + " set " + desart + " = " + desvalue + " WHERE " + queryart + " = " + queryvalue;
+    console.log(sqlText);
+    //query(sqlText, callback);
 };

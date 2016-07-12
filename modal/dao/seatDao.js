@@ -23,6 +23,13 @@ Seat.queryAll = function(callback) {
     seatTable.queryAll(callback);
 };
 
+Seat.queryByCorXandCorY = function(showingId, CorX, CorY, callback) {
+    var oNewObj = {"showingId": Number(showingId), "SeatRow":CorX, "SeatCol":CorY}
+    seatTable.queryByAttrs(oNewObj, 'and', callback);
+}
+
+
+
 Seat.queryCannotBuySeatByShowingId = function(id,callback) {
      var oNewObj = {"showingId":Number(id), "seatIsBought":1}
      seatTable.queryByAttrs(oNewObj, 'and', callback);
