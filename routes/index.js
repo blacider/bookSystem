@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
       });
     });
 });
-
+// 默认使用views文件夹
 router.get('/book', function(req, res, next) {
   console.log(req.query.id);
   movie = {}
@@ -37,12 +37,20 @@ router.get('/book', function(req, res, next) {
     }
     movieFinish = true
     if (theatersFinish && movieFinish) {
+      // express记住了要解析的扩展名为html
       res.render('book', { 
         title: 'Express',
         movie: movie,
         theaters: theaters });
     }
   });
+
+router.get('/myorders', function(req, res, next) {
+  console.log(req.query);
+  res.render('myorders', {
+    title: 'My Orders'
+  });
+});
 
   movieCatlogDao.queryMovieCatlogByMovieId(req.query.id, function(err, result){
     theaterIds = []

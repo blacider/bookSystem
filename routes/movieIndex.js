@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
         }
         movies.push(newMovie);
       }
-      res.render('index', {
+      res.render('myorders', {
         title: 'Express',
         movies: movies 
       });
