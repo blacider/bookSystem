@@ -46,8 +46,10 @@
                 var data = {
                     showingPrice: target.data('showingprice'),
                     roomId: target.data('roomid'),
+                    movieId: target.data('movieid'),
                     showingTime: target.data('showingtime'),
-                    movieName: $("#movieName").data('moviename')
+                    movieName: $("#movieName").data('moviename'),
+                    showingId: target.data("showingid")
                 };
                 var formDom = $("#chooseSeatForm");
                 for (item in data) {

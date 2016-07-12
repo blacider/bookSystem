@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var movieDao = require("../modal/dao/movieDao.js");
 var theaterDao = require("../modal/dao/theaterDao.js");
-var movieCatlogDao = require("../modal/dao/movieCatlogDao.js")
-var showingDao = require("../modal/dao/showingDao.js")
-var roomDao = require("../modal/dao/roomDao.js")
+var movieCatlogDao = require("../modal/dao/movieCatlogDao.js");
+var showingDao = require("../modal/dao/showingDao.js");
+var roomDao = require("../modal/dao/roomDao.js");
+var seatDao = require("../modal/dao/seatDao.js");
 var logger = require("../util/logger.js");
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -74,31 +75,65 @@ router.get('/book', function(req, res, next) {
   });
 });
 
+router.get('/test', function(req, res, next) {
+  seatDao.queryCannotBuySeatByShowingId(1, function(error, result) {
+  sSeatStringList=[];
+  for (var i in result) {
+    var sTempString = "";
+    sTempString += result[i]['seatRow'].toString();
+    sTempString += "_";
+    sTempString += result[i]['seatCol'].toString();
+    sSeatStringList.push(sTempString);
+  }
+  console.log(sSeatStringList);
+  });
+});
+
 router.post('/chooseSeat', function(req, res, next) {
     var data={
       showingPrice: Number(req.body.showingPrice),
       roomId: Number(req.body.roomId),
       showingTime: req.body.showingTime,
+      movieId: Number(req.body.movieId),
+      showingId: Number(req.body.showingId),
       movieName: req.body.movieName
     }
-    res.json(data);
-    // roomDao.queryRoomByRoomId(req.body.roomId, function(error, result) {
-    //   mapString = result[0]['roomMap'];
-    //   roomCol = result[0]['roomCol'];
-    //   var roomRow = mapString.length/roomCol;
-    //   var i = 0;
-    //   map = [];
-    //   while (i < roomRow) {
-    //     var subString = mapString.substring(i*roomCol, (i+1)*roomCol);
-    //     map.push(subString);
-    //     i++;
-    //   }
-      
-    //   res.render('seats', {
-    //       title:"Express",
-    //       map: map
-    //     });
-    //   });
+    roomDao.queryRoomByRoomId(data.roomId, function(error, result) {
+       mapString = result[0]['roomMap'];
+       roomCol = result[0]['roomCol'];
+       var roomRow = mapString.length/roomCol;
+       var i = 0;
+       map = [];
+       while (i < roomRow) {
+         var subString = mapString.substring(i*roomCol, (i+1)*roomCol);
+         map.push(subString);
+         i++;
+       }
+       console.log(map)
+       showingData = {
+         showingPrice:data.showingPrice,
+         movieName:data.movieName,
+         map:map,
+         showingTime:data.showingTime
+       }
+       console.log(data.showingId);
+       seatDao.queryCannotBuySeatByShowingId(data.showingId, function(error, result) {
+         sSeatStringList=[];
+         for (var i in result) {
+           var sTempString = "";
+           sTempString += result[i]['seatRow'].toString();
+           sTempString += "_";
+           sTempString += result[i]['seatCol'].toString();
+           sSeatStringList.push(sTempString);
+         }
+         console.log(sSeatStringList);
+         res.render('seats', {
+           title:"Express",
+           showingData: showingData,
+           sSeatStringList:sSeatStringList
+         });
+       });
+      });
     });
 
 router.get('/getTimeTable', function(req, res, next) {
@@ -121,6 +156,7 @@ router.get('/getTimeTable', function(req, res, next) {
           showingType: result[i]['showingType'],
           showingPrice: result[i]['showingPrice'],
           showingId: result[i]['showingId'],
+          movieId:req.query.movieId,
           roomId: result[i]['RoomId']
         }
         if (data[sString] == undefined) {
