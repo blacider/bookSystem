@@ -46,7 +46,7 @@ router.get('/book', function(req, res, next) {
     }
   });
 
-router.get('/myorders', function(req, res, next) {
+router.get('/users/myorders', function(req, res, next) {
   console.log(req.query);
   res.render('myorders', {
     title: 'My Orders'
