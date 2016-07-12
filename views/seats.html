@@ -11,79 +11,67 @@
             <div class="front">屏幕</div>                     
         </div> 
         <div class="booking-details"> 
-            <p>影片：<span>星际穿越3D</span></p> 
-            <p>时间：<span>11月14日 21:00</span></p> 
+            <p>影片：<span><%=showingData.movieName%></span></p> 
+            <p>时间：<span><%=showingData.showingTime%></span></p> 
             <p>座位：</p> 
             <ul id="selected-seats"></ul> 
             <p>票数：<span id="counter">0</span></p> 
             <p>总计：<b>￥<span id="total">0</span></b></p> 
                              
-            <button class="checkout-button">确定购买</button> 
+            <div class="checkout-button">确定购买</div> 
                              
             <div id="legend"></div> 
         </div> 
     </div>
+    <form method="post" action="/doBooking" class="hidden" id="bookTable">
+    </form>
 <script src="js/jquery.seat-charts.min.js"></script>
 <script>
     $(document).ready(function() {
         var price = <%=showingData.showingPrice%>; //票价 
-        $(document).ready(function() { 
             var $cart = $('#selected-seats'), //座位区 
             $counter = $('#counter'), //票数 
             $total = $('#total'); //总计金额 
              
-            var sc = $('#seat-map').seatCharts({ 
-                map: [  //座位图 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    '__________', 
-                    'aaaaaaaa__', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aaaaaaaaaa', 
-                    'aa__aa__aa' 
-                ], 
-                legend : { //定义图例 
-                    node : $('#legend'), 
-                    items : [ 
-                        [ 'a', 'available',   '可选座' ], 
-                        [ 'a', 'unavailable', '已售出'] 
-                    ]                     
-                }, 
-                click: function () { //点击事件 
-                    if (this.status() == 'available') { //可选座 
-                        $('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>') 
-                            .attr('id', 'cart-item-'+this.settings.id) 
-                            .data('seatId', this.settings.id) 
-                            .appendTo($cart); 
-         
-                        $counter.text(sc.find('selected').length+1); 
-                        $total.text(recalculateTotal(sc)+price); 
-                                     
-                        return 'selected'; 
-                    } else if (this.status() == 'selected') { //已选中 
-                        //更新数量 
-                        $counter.text(sc.find('selected').length-1); 
-                        //更新总计 
-                        $total.text(recalculateTotal(sc)-price); 
+        var sc = $('#seat-map').seatCharts({ 
+            map: '<%=showingData.map%>'.split(","),
+            legend : { //定义图例 
+                node : $('#legend'), 
+                items : [ 
+                    [ 'a', 'available',   '可选座' ], 
+                    [ 'a', 'unavailable', '已售出'] 
+                ]                     
+            }, 
+            click: function () { //点击事件 
+                if (this.status() == 'available') { //可选座 
+                    $('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>') 
+                        .attr('id', 'cart-item-'+this.settings.id) 
+                        .data('seatId', this.settings.id) 
+                        .appendTo($cart); 
+     
+                    $counter.text(sc.find('selected').length+1); 
+                    $total.text(recalculateTotal(sc)+price); 
                                  
-                        //删除已预订座位 
-                        $('#cart-item-'+this.settings.id).remove(); 
-                        //可选座 
-                        return 'available'; 
-                    } else if (this.status() == 'unavailable') { //已售出 
-                        return 'unavailable'; 
-                    } else { 
-                        return this.style(); 
-                    } 
+                    return 'selected'; 
+                } else if (this.status() == 'selected') { //已选中 
+                    //更新数量 
+                    $counter.text(sc.find('selected').length-1); 
+                    //更新总计 
+                    $total.text(recalculateTotal(sc)-price); 
+                             
+                    //删除已预订座位 
+                    $('#cart-item-'+this.settings.id).remove(); 
+                    //可选座 
+                    return 'available'; 
+                } else if (this.status() == 'unavailable') { //已售出 
+                    return 'unavailable'; 
+                } else { 
+                    return this.style(); 
                 } 
-            }); 
-            //已售出的座位 
-            sc.get(['1_2', '4_4','4_5','6_6','6_7','8_5','8_6','8_7','8_8', '10_1', '10_2']).status('unavailable'); 
-                 
+            } 
         }); 
+        //已售出的座位 
+        sc.get('<%=sSeatStringList%>'.split(",")).status('unavailable'); 
         //计算总金额 
         function recalculateTotal(sc) { 
             var total = 0; 
@@ -92,7 +80,20 @@
             }); 
                      
             return total; 
-        } 
+        }
+        $(".checkout-button").click(function(event) {
+            var data = {
+                // 逗号分割的座位，比如: '1_2,2_3'
+                seats: sc.find('selected').seatIds.join(",")
+            };
+            if (data.seats === '') return;
+            var formDom = $("#bookTable");
+            for (item in data) {
+                formDom.append('<input type="text" name="'+item+'" value="'+data[item]+'">');
+            }
+            showLoading();
+            formDom.submit();
+        });
     });
 </script>
 <% include foot.html%>
