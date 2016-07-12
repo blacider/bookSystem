@@ -46,12 +46,6 @@ router.get('/book', function(req, res, next) {
     }
   });
 
-router.get('/users/myorders', function(req, res, next) {
-  console.log(req.query);
-  res.render('myorders', {
-    title: 'My Orders'
-  });
-});
 
   movieCatlogDao.queryMovieCatlogByMovieId(req.query.id, function(err, result){
     theaterIds = []
@@ -96,6 +90,15 @@ router.get('/test', function(req, res, next) {
   console.log(sSeatStringList);
   });
 });
+
+// 用户订单管理
+router.get('/myorders', function(req, res, next) {
+  console.log(req.query);
+  res.render('myorders', {
+    title: 'My Orders'
+  });
+});
+
 
 router.post('/chooseSeat', function(req, res, next) {
     var data={
