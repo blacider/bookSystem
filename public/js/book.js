@@ -55,6 +55,7 @@
                 for (item in data) {
                     formDom.append('<input type="text" name="'+item+'" value="'+data[item]+'">')
                 }
+                showLoading();
                 formDom.submit();
                 //window.location.href = '/chooseSeat?showingId=' + $(event.target).data("id");
             });

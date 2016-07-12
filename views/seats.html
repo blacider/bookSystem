@@ -18,11 +18,13 @@
             <p>票数：<span id="counter">0</span></p> 
             <p>总计：<b>￥<span id="total">0</span></b></p> 
                              
-            <button class="checkout-button">确定购买</button> 
+            <div class="checkout-button">确定购买</div> 
                              
             <div id="legend"></div> 
         </div> 
     </div>
+    <form method="post" action="/doBooking" class="hidden" id="bookTable">
+    </form>
 <script src="js/jquery.seat-charts.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -81,7 +83,19 @@
             }); 
                      
             return total; 
-        } 
+        }
+        $(".checkout-button").click(function(event) {
+            var data = {
+                // 逗号分割的座位，比如: '1_2,2_3'
+                seats: sc.find('selected').seatIds.join(",")
+            };
+            var formDom = $("#bookTable");
+            for (item in data) {
+                formDom.append('<input type="text" name="'+item+'" value="'+data[item]+'">');
+            }
+            showLoading();
+            formDom.submit();
+        });
     });
 </script>
 <% include foot.html%>
