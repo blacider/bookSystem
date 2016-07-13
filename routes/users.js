@@ -23,12 +23,12 @@ router.post('/login', function(req, res, next) {
             res.redirect(req.body.url);
         } else {
             userDao.queryUserByName(req.body.name, function(err, result) {
-                if (result.pass != req.body.pass) {
+                if (result[0].password != req.body.password) {
                     req.session.error = "密码不正确";
-                    res.redirect("/login");
+                    res.redirect("/");
                 } else {
                     req.session.name = req.body.name;
-                    req.session.userId = result.id;
+                    req.session.userId = result[0].id;
                     res.redirect(req.body.url);
                 }
             });
