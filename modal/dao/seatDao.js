@@ -28,11 +28,12 @@ Seat.queryByCorXandCorY = function(showingId, CorX, CorY, callback) {
     seatTable.queryByAttrs(oNewObj, 'and', callback);
 }
 
+Seat.updateIsBought = function(seatId, callback) {
+    seatTable.update("seatIsBought", 1, "seatId", seatId, callback);
+}
 
 
 Seat.queryCannotBuySeatByShowingId = function(id,callback) {
      var oNewObj = {"showingId":Number(id), "seatIsBought":1}
      seatTable.queryByAttrs(oNewObj, 'and', callback);
 }
-
-Seat.updateSeatBySeatIsBought

@@ -6,6 +6,7 @@ var movieCatlogDao = require("../modal/dao/movieCatlogDao.js");
 var showingDao = require("../modal/dao/showingDao.js");
 var roomDao = require("../modal/dao/roomDao.js");
 var seatDao = require("../modal/dao/seatDao.js");
+var orderDao = require("../modal/dao/orderDao.js");
 var logger = require("../util/logger.js");
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -94,8 +95,28 @@ router.get('/test', function(req, res, next) {
 // 用户订单管理
 router.get('/myorders', function(req, res, next) {
   console.log(req.query);
-  res.render('myorders', {
-    title: 'My Orders'
+  console.log(req.session);
+  var Orders = []
+  orderDao.queryOrderByUserId(Number(req.session.userId), function(error, result) {
+    for (i in result) {
+      newOrders = {
+        orderTime : result[i]["orderTime"].toLocaleString(),
+        movieName : result[i]["movieName"],
+        theaterName : result[i]["theaterName"],
+        showingTime : result[i]["showingTime"].toLocaleString(),
+        roomName : result[i]["roomName"],
+        seatRow : result[i]["seatRow"],
+        seatCol : result[i]["seatCol"],
+        seatNum : result[i]["seatCol"].toString() + "_" +result[i]["seatRow"].toString(),
+        showingPrice : result[i]["showingPrice"]
+      };
+      Orders.push(newOrders);
+    }
+    console.log(Orders)
+    res.render('myorders', {
+      title: 'My Orders',
+      Orders: Orders
+    });
   });
 });
 
@@ -191,12 +212,30 @@ router.post('/doBooking', function(req, res, next) {
   showingId = req.body.showingId;
   userId = req.session.userId;
   seatsList = seatsCor.split(',');
+  var index = 0
   for (var i in seatsList) {
     var seatCor = seatsList[i].split('_');
     var corX = Number(seatCor[0]);
     var corY = Number(seatCor[1]);
     seatDao.queryByCorXandCorY(showingId, corX, corY,function(error, result) {
-      console.log(result[0]);
+      seatDao.updateIsBought(result[0]["seatId"], function(error, result_) {
+        var orderDate = new Date();
+        orderDateString = orderDate.toLocaleDateString() + " " + orderDate.getHours() + ":" + orderDate.getMinutes() + ":" + orderDate.getSeconds();
+        console.log(orderDateString);
+        var order = new orderDao({
+          showingId : Number(showingId),
+          seatId : Number(result[0]["seatId"]),
+          userId : Number(req.session.userId),
+          orderTime : orderDateString
+        });
+        order.save(function(err, result) {
+          index += 1;
+          console.log(index)
+          if (index >= seatsList.length) {
+            res.redirect('/myorders');
+          }
+        });
+      });
     });
   }
 });
