@@ -4,31 +4,21 @@
   <div class="container">
     <div class="order-list-header">已有订单</div>
     <div class="order-list-content">
+      <ul>
+        <% for (orderNum in Orders) {
+        var order = Orders[orderNum];
+        %>
       <li>
-        <div class="order-time">下单时间：2016-07-01  13:45</div>
-        <div class="movie">大鱼海棠</div>
-        <div class="price">￥25.00</div>
-        <div class="theater">国家大剧院</div>
-        <div class="show-time">放映时间：2016-07-08  19:00</div>
-        <div class="room">厅号：3号厅</div>
-        <div class="seat">座位号：17</div>
+        <div class="order-time">下单时间：<%=order.orderTime%> </div>
+        <div class="movie"><%=order.movieName%></div>
+        <div class="price">￥<%=order.showingPrice%></div>
+        <div class="theater"><%=order.theaterName%></div>
+        <div class="show-time">放映时间：<%=order.showingTime%></div>
+        <div class="room">厅号：<%=order.roomName%></div>
+        <div class="seat">座位号：<%=order.seatNum%></div>
       </li>
-      <li>
-        <div class="order-time">下单时间：2016-07-01  13:45</div>
-        <div class="movie">大鱼海棠</div>
-        <div class="price">￥25.00</div>
-        <div class="theater">国家大剧院</div>
-        <div class="show-time">放映时间：2016-07-08  19:00</div>
-        <div class="room">厅号：3号厅</div>
-        <div class="seat">座位号：17</div>      </li>
-      <li>
-        <div class="order-time">下单时间：2016-07-01  13:45</div>
-        <div class="movie">大鱼海棠</div>
-        <div class="price">￥25.00</div>
-        <div class="theater">国家大剧院</div>
-        <div class="show-time">放映时间：2016-07-08  19:00</div>
-        <div class="room">厅号：3号厅</div>
-        <div class="seat">座位号：17</div>      </li>
+      <%}%>
+      </ul>
     </div>
   </div>
   <% include foot.html %>
