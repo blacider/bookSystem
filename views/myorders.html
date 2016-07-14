@@ -3,21 +3,29 @@
   <!-- <script src="js/index.js"></script> -->
   <div class="container">
     <div class="order-list-header">已有订单</div>
+    <div class="order-table-header">
+      <div class="movie">电影</div>
+      <div class="theater">影院</div>
+      <div class="show-time">放映时间</div>
+      <div class="room">厅号</div>
+      <div class="seat">座位号</div>
+      <div class="price">单价</div>
+    </div>
     <div class="order-list-content">
       <ul>
         <% for (orderNum in Orders) {
         var order = Orders[orderNum];
         %>
-      <li>
-        <div class="order-time">下单时间：<%=order.orderTime%> </div>
-        <div class="movie"><%=order.movieName%></div>
-        <div class="price">￥<%=order.showingPrice%></div>
-        <div class="theater"><%=order.theaterName%></div>
-        <div class="show-time">放映时间：<%=order.showingTime%></div>
-        <div class="room">厅号：<%=order.roomName%></div>
-        <div class="seat">座位号：<%=order.seatNum%></div>
-      </li>
-      <%}%>
+        <li>
+          <div class="order-time">下单时间：<%=order.orderTime%> </div>
+          <div class="movie"><%=order.movieName%></div>
+          <div class="theater"><%=order.theaterName%></div>
+          <div class="show-time"><%=order.showingTime%></div>
+          <div class="room"><%=order.roomName%></div>
+          <div class="seat"><%=order.seatNum%></div>
+          <div class="price">￥<%=order.showingPrice%></div>
+        </li>
+        <%}%>
       </ul>
     </div>
   </div>
