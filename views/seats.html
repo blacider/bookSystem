@@ -84,7 +84,8 @@
         $(".checkout-button").click(function(event) {
             var data = {
                 // 逗号分割的座位，比如: '1_2,2_3'
-                seats: sc.find('selected').seatIds.join(",")
+                seats: sc.find('selected').seatIds.join(","),
+                showingId:<%=showingData.showingId%>
             };
             if (data.seats === '') return;
             var formDom = $("#bookTable");

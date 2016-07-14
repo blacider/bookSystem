@@ -9,12 +9,21 @@
   font-weight: bold;
   background-color: white;
 }
+.order-table-header {
+  font-size: 1.2em;
+  background-color: #e5e5e5;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
 .order-list-content li {
   background-color: white;
   list-style: none;
   margin-top: 20px;
   border: 1px solid #ccc;
-  /*height: 80px;*/
+}
+.order-list-content li:last-child {
+  margin-bottom: 40px;
 }
 .order-list-content li:hover {
   background-color: #ccc;
@@ -23,30 +32,33 @@
 .order-time {
   height: 45px;
   line-height: 45px;
-  background-color: #f1f1f1;
+  background-color: #e5e5e5;
   font-family: Tahoma,Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
   padding-left: 2%;
   border-bottom: 1px solid #ccc;
 }
 .movie, .price, .theater, .room, .seat, .show-time {
   display: inline-block;
-  font-weight: bold;
   margin-right: 2%;
+  text-align: center;
+  padding: 20px 0px;
 }
 
 .movie {
-  margin-top: 20px;
-  margin-left: 2%;
+  width: 15%;
 }
-
-.price {
-
+.theater {
+  width: 15%;
 }
-.theater, .show-time {
+.show-time {
+  width: 20%;
 }
 .room {
-
+  width: 10%;
 }
 .seat {
-  margin-bottom: 20px;
+  width: 10%;
+}
+.price {
+  width: 10%;
 }
