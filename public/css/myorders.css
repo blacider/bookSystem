@@ -11,23 +11,22 @@
 }
 .order-list-content li {
   background-color: white;
-  padding: 20px 10px;
   list-style: none;
+  margin-top: 20px;
+  border: 1px solid #ccc;
   /*height: 80px;*/
-  margin-top: 2px
 }
 .order-list-content li:hover {
   background-color: #ccc;
 }
-.order-list-content li:first-child {
-  border-top: 1px solid #ff4500;
-}
 
 .order-time {
-  font-size: 2em;
-  margin-left: 2%;
-  padding-bottom: 2%;
+  height: 45px;
+  line-height: 45px;
+  background-color: #f1f1f1;
   font-family: Tahoma,Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+  padding-left: 2%;
+  border-bottom: 1px solid #ccc;
 }
 .movie, .price, .theater, .room, .seat, .show-time {
   display: inline-block;
@@ -35,26 +34,19 @@
   margin-right: 2%;
 }
 
-.order-list-content li .movie {
-  font-size: 2em;
+.movie {
+  margin-top: 20px;
   margin-left: 2%;
 }
-.order-list-content li .price {
-  display: block;
-  font-size: 3em;
-  font-style: italic;
-  float: right;
-  margin-right: 3%;
-  margin-top: 10px;
+
+.price {
+
 }
-.order-list-content li .theater,
-.order-list-content li .show-time {
-  font-size: 1.5em;
+.theater, .show-time {
 }
-.order-list-content li .room, 
-.order-list-content li .seat {
-  font-weight: normal;
-  display: block;
-  font-size: 1.3em;
-  margin-left: 2%;
+.room {
+
+}
+.seat {
+  margin-bottom: 20px;
 }
