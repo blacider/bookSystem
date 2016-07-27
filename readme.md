@@ -10,7 +10,6 @@ bookSystem 是一个电影订票系统。
 
 > * node
 > * jQuery
-> * angular.js
 
 > ### 后端
 

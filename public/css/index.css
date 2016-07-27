@@ -17,7 +17,8 @@
 }
 .banner-item {
     list-style: none;
-    width: 148px;
+    box-sizing: border-box;
+    width: 149px;
     height: 330px;
     float: left;
     background-color: white;
